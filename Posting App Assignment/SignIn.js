@@ -1,6 +1,6 @@
 const supabaseClient = supabase.createClient(
-  "https://wppducaylmjwdtzumvog.supabase.co",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndwcGR1Y2F5bG1qd2R0enVtdm9nIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk1NTU1ODAsImV4cCI6MjA3NTEzMTU4MH0.WaUWFutRBTQpEQluBj34fs2oC0PGbu1U-ZdYj-ipR_E"
+  "https://queftwxqyuinynpsixqa.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF1ZWZ0d3hxeXVpbnlucHNpeHFhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk5MTQ5NDEsImV4cCI6MjA3NTQ5MDk0MX0.TWex1aIXHoopzD9q1LR2hOt6hsBY6JN3aAtaXpvM5hc"
 );
 
 const userEmailInput = document.getElementById("SignIn_emailInput");
@@ -51,7 +51,7 @@ const checkUser = async () => {
       await supabaseClient.auth.signOut();
       return;
     }
-    window.location.href = "../Main/index.html";
+    window.location.href = "./Main/homepage.html";
   }
 };
 
@@ -69,25 +69,25 @@ const signInUser = async () => {
     console.error(error.message);
   } else {
     console.log(data);
-    window.location.href = "../Main/index.html";
+    window.location.href = "./Main/homepage.html";
   }
 };
 
 const showErrors = () => {
-    const loadBtn = document.createElement("button");
-    loadBtn.className = "btn btn-primary text-secondary SignIn_btn";
-    loadBtn.type = "button";
-    loadBtn.innerHTML = `
+  const loadBtn = document.createElement("button");
+  loadBtn.className = "btn btn-primary text-secondary SignIn_btn";
+  loadBtn.type = "button";
+  loadBtn.innerHTML = `
     <span style="display:inline-flex;align-items:center;gap:8px;">
         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
         <span role="status">Loading...</span>
     </span>
     `;
 
-    signInBtn.replaceWith(loadBtn);  
-    setTimeout(() => {
-        loadBtn.replaceWith(signInBtn)
-    }, 3000);
+  signInBtn.replaceWith(loadBtn);
+  setTimeout(() => {
+    loadBtn.replaceWith(signInBtn);
+  }, 900);
 
   const checkEmailInput = userEmailInput.value.trim();
   const checkPasswordInput = userPasswordInput.value.trim();

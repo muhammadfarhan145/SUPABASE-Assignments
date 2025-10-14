@@ -1,6 +1,6 @@
 const supabaseClient = supabase.createClient(
-  "https://wppducaylmjwdtzumvog.supabase.co",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndwcGR1Y2F5bG1qd2R0enVtdm9nIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk1NTU1ODAsImV4cCI6MjA3NTEzMTU4MH0.WaUWFutRBTQpEQluBj34fs2oC0PGbu1U-ZdYj-ipR_E"
+  "https://queftwxqyuinynpsixqa.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF1ZWZ0d3hxeXVpbnlucHNpeHFhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk5MTQ5NDEsImV4cCI6MjA3NTQ5MDk0MX0.TWex1aIXHoopzD9q1LR2hOt6hsBY6JN3aAtaXpvM5hc"
 );
 
 const userName = document.getElementById("userNameInput");
@@ -10,123 +10,234 @@ const userCurrentEmail = document.getElementById("userCurrentEmail_P");
 const postBtn = document.getElementById("postBtn");
 const centerPostDiv = document.getElementById("centerPostDiv");
 const signOutBtn = document.getElementById("signOutButton");
+const DocumentationBtn = document.getElementById("DocumentationBtn");
 
+const checkSession = async () => {
+  const {
+    data: { session },
+  } = await supabaseClient.auth.getSession();
 
-const congratsUser = () => {
-   const toastLiveExample = document.getElementById('congratsForLogin');
-    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
-    toastBootstrap.show();
+  if (!session) {
+    window.location.href = "./SignUp/SignUp.html";
+  }
+};
+checkSession();
+
+const showToast = (id) => {
+  const toastLiveExample = document.getElementById(id);
+  const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
+  toastBootstrap.show();
 };
 
-congratsUser();
-
-const tellPostUpload = () => {
-  const toastLiveExample = document.getElementById('postUploaded');
-    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
-    toastBootstrap.show();
-};
-
-const fieldErrorModal = () => {
-  const fieldsErrorModal = new bootstrap.Modal(
-    document.getElementById("fielderrorModal")
+const documentationModal = () => {
+  const docModal = new bootstrap.Modal(
+    document.getElementById("documentationModal")
   );
-  fieldsErrorModal.show();
+  docModal.show();
 };
 
-
-const signOutModal = () => {
-  const SignOutModal = new bootstrap.Modal(
-    document.getElementById("signOutModal")
-  );
-  SignOutModal.show();
+const showModal = (id) => {
+  const modal = new bootstrap.Modal(document.getElementById(id));
+  modal.show();
 };
 
-// const likePost = () => {
-//   const likeBtn = document.getElementById("likeBtn");
-//   if (likeBtn.classList.contains("fa-regular")) {
-//     likeBtn.classList.remove("fa-regular");
-//     likeBtn.classList.add("fa-solid");
-//     likeBtn.style.color = "red";
-//   } else {
-//     likeBtn.classList.remove("fa-solid");
-//     likeBtn.classList.add("fa-regular");
-//     likeBtn.style.color = "";
-//   }
-// }
+const userCurrentAccount = async () => {
+  const {
+    data: { user },
+  } = await supabaseClient.auth.getUser();
+
+  if (user) {
+    userCurrentEmail.textContent = user.email;
+  }
+};
+userCurrentAccount();
 
 const signOutUser = async () => {
+  const confirmSignOutUser = confirm("Are you sure you want to sign out?");
+  if (!confirmSignOutUser) return;
 
-  confirmSignOutUser = confirm("Are you sure You Want to sign Out?");
-
-  if (!confirmSignOutUser) {
+  const { error } = await supabaseClient.auth.signOut({ scope: "local" });
+  if (error) {
+    console.error(error.message);
     return;
-  };
+  }
 
-  const { error } = await supabaseClient.auth.signOut({ scope: 'local' })
-
-  if(error) {
-    console.log("Something went Wrong");
-  } else {
-    signOutModal();
-    window.location.href = "../SignIn/SignIn.html";
-  };
+  showModal("signOutModal");
+  setTimeout(() => {
+    window.location.href = "../index.html";
+  }, 1500);
 };
+signOutBtn.addEventListener("click", signOutUser);
 
+postBtn.addEventListener("click", async () => {
+  const user = (await supabaseClient.auth.getUser()).data.user;
+  const publicity = toggle.checked ? "Public" : "Private";
 
-signOutBtn.addEventListener("click" , signOutUser);
+  if (userName.value.trim() === "" || userPostText.value.trim() === "") {
+    showModal("fielderrorModal");
+    return;
+  }
 
-const showPost = async () => {
-    const now = new Date();
-    const time = now.toLocaleTimeString();
+  const { error } = await supabaseClient.from("posts").insert({
+    user_name: userName.value,
+    content: userPostText.value,
+    publicity,
+    user_id: user.id,
+  });
 
-    if(userName.value === "" || userPostText.value === "") {
-      fieldErrorModal();
-     return
-  };
+  if (error) {
+    console.error(error.message);
+    return;
+  }
 
-
-    const publicity = toggle.checked ? "Public" : "Private" ;
-    
-    const postDiv = document.createElement("div");
-    postDiv.className = "postDiv";
-    postDiv.id = "postDiv";
-    postDiv.innerHTML = `
-    <div class="postDataDiv">
-      <img src="../Assets/user_pfp.jpeg" class="postDivUserImg"/>
-      <div class="usernamePublicityDiv">
-        <p class="postDivUserName">${userName.value.trim()}</p>
-        <p class="postPublicty_P" id="postPublicty_P">${publicity}</p>
-      </div>
-    </div>
-    <p>${userPostText.value.trim()}</p>
-    <div>
-      <div>
-        <i class="fa-regular fa-heart likeBtn"></i>
-        <i class="fa-solid fa-comment commentBtn" id="commentBtn" onclick="likePost()"></i>
-      </div>
-      <p>${time}</p>
-    </div>
-    `;
-    centerPostDiv.appendChild(postDiv);
-    
+  showToast("postUploaded");
   userName.value = "";
   userPostText.value = "";
+  loadPost();
+});
 
- const likeBtns = document.querySelectorAll(".likeBtn");
+const loadPost = async () => {
+  centerPostDiv.innerHTML = "";
+  const {
+    data: { user },
+  } = await supabaseClient.auth.getUser();
 
-likeBtns.forEach(btn => {
-  btn.addEventListener("click", () => {
-    if (btn.classList.contains("fa-regular")) {
-      btn.classList.remove("fa-regular");
-      btn.classList.add("fa-solid");
-      btn.style.color = "red";
-    } 
-    else {
-      btn.classList.remove("fa-solid");
-      btn.classList.add("fa-regular");
-      btn.style.color = "";
+  const { data: posts, error } = await supabaseClient
+    .from("posts")
+    .select("*")
+    .or(`publicity.eq.Public,user_id.eq.${user.id}`)
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    console.error(error.message);
+    return;
+  }
+
+  posts.forEach(async (post) => {
+    const postDiv = document.createElement("div");
+    postDiv.className = "postDiv";
+
+    let postHTML = `
+      <div class="postDataDiv">
+        <img src="../Assets/user_pfp.jpeg" class="postDivUserImg"/>
+        <div class="usernamePublicityDiv">
+          <p class="postDivUserName">${post.user_name}</p>
+          <p class="postPublicty_P">${post.publicity}</p>
+        </div>
+      </div>
+      <p class="userPostContent">${post.content}</p>
+    `;
+
+    if (post.publicity === "Public") {
+      postHTML += `
+        <div>
+          <div class="likeSection">
+            <i class="fa-regular fa-heart fa-lg likeBtn" data-post-id="${post.id}"></i>
+            <i class="fa-regular fa-comment fa-lg commentBtn" data-post-id="${post.id}"></i>
+          </div>
+          <div class="likedByDiv" id="likedBy-${post.id}">
+            <p class="likedByText">Loading likes...</p>
+          </div>
+        </div>
+      `;
+    } else {
+      postHTML += `
+        <div class="privateInfo">
+          <p class="privateText"> This is a private post, So You Cant Like Or Comment</p>
+        </div>
+      `;
+    }
+
+    postDiv.innerHTML = postHTML;
+    centerPostDiv.appendChild(postDiv);
+
+    if (post.publicity === "Public") {
+      await loadLikedBy(post.id);
     }
   });
-});
+
+  attachLikeEvents();
+
+  DocumentationBtn.addEventListener("click", documentationModal);
 };
-postBtn.addEventListener("click" , showPost);
+
+const loadLikedBy = async (postId) => {
+  const LikedbyDiv = document.getElementById(`likedBy-${postId}`);
+
+  const { data: likes, error } = await supabaseClient
+    .from("likes")
+    .select("user_id")
+    .eq("post_id", postId);
+
+  if (error) {
+    console.error("Error loading likes:", error.message);
+    LikedbyDiv.textContent = "Failed to load likes";
+    return;
+  }
+
+  if (!likes || likes.length === 0) {
+    LikedbyDiv.textContent = "No likes yet";
+    return;
+  }
+
+const likedByNames = [];
+
+for (let i = 0; i < likes.length; i++) {
+  const like = likes[i];
+  const { data: userPost } = await supabaseClient
+    .from("posts")
+    .select("user_name")
+    .eq("user_id", like.user_id)
+    .limit(1)
+    .single();
+
+  likedByNames.push(userPost?.user_name || "Unknown");
+}
+
+  LikedbyDiv.innerHTML = `Liked by: ${likedByNames.join(", ")}`;
+};
+
+const attachLikeEvents = async () => {
+  const likeBtns = document.querySelectorAll(".likeBtn");
+  const user = (await supabaseClient.auth.getUser()).data.user;
+
+  likeBtns.forEach((btn) => {
+    btn.onclick = async () => {
+      const postId = btn.dataset.postId;
+
+      const { data: existingLike } = await supabaseClient
+        .from("likes")
+        .select("*")
+        .eq("post_id", postId)
+        .eq("user_id", user.id)
+        .maybeSingle();
+
+      if (existingLike) {
+        await supabaseClient
+          .from("likes")
+          .delete()
+          .eq("post_id", postId)
+          .eq("user_id", user.id);
+
+        btn.classList.remove("fa-solid");
+        btn.classList.add("fa-regular");
+        btn.style.color = "";
+      } else {
+        await supabaseClient.from("likes").insert({
+          post_id: postId,
+          user_id: user.id,
+        });
+
+        btn.classList.remove("fa-regular");
+        btn.classList.add("fa-solid");
+        btn.style.color = "red";
+      }
+
+      await loadLikedBy(postId);
+    };
+  });
+};
+
+loadPost();
+showToast("congratsForLogin");
+documentationModal();

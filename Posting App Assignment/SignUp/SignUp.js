@@ -1,6 +1,6 @@
 const supabaseClient = supabase.createClient(
-  "https://wppducaylmjwdtzumvog.supabase.co",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndwcGR1Y2F5bG1qd2R0enVtdm9nIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk1NTU1ODAsImV4cCI6MjA3NTEzMTU4MH0.WaUWFutRBTQpEQluBj34fs2oC0PGbu1U-ZdYj-ipR_E"
+  "https://queftwxqyuinynpsixqa.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF1ZWZ0d3hxeXVpbnlucHNpeHFhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk5MTQ5NDEsImV4cCI6MjA3NTQ5MDk0MX0.TWex1aIXHoopzD9q1LR2hOt6hsBY6JN3aAtaXpvM5hc"
 );
 
 const userEmailInput = document.getElementById("SignUp_emailInput");
@@ -23,7 +23,6 @@ const passLenghtModal = () => {
   passwordErrorModal.show();
 };
 
-
 const showErrors = () => {
   const loadBtn = document.createElement("button");
   loadBtn.className = "btn btn-primary text-secondary Next_btn";
@@ -35,26 +34,24 @@ const showErrors = () => {
   </span>
   `;
   Next_btn.replaceWith(loadBtn);
-  
-  setTimeout(() => {
-      loadBtn.replaceWith(Next_btn);
-    }, 900);
-    
-    const email = userEmailInput.value.trim();
-    const password = userPasswordInput.value.trim();
 
-    if (!email || !password) {
-        fieldErrorModal();
-        return;
-    }
-    
-    if (password.length < 6) {
-        passLenghtModal();
-        return;
+  setTimeout(() => {
+    loadBtn.replaceWith(Next_btn);
+  }, 900);
+
+  const email = userEmailInput.value.trim();
+  const password = userPasswordInput.value.trim();
+
+  if (!email || !password) {
+    fieldErrorModal();
+    return;
   }
 
-  
-  
+  if (password.length < 6) {
+    passLenghtModal();
+    return;
+  }
+
   signUpEmailSec.innerHTML = `
     <input type="text" class="Name_FNameSection" id ="Name_FNameSection" placeholder="Enter Your First Name" required />
   `;
@@ -64,40 +61,39 @@ const showErrors = () => {
   `;
 
   Next_btn.textContent = "Sign Up";
-    
+
   Next_btn.removeEventListener("click", showErrors);
   Next_btn.addEventListener("click", registerUser);
 };
 
-
 async function registerUser() {
-    const FName = document.getElementById("Name_FNameSection").value.trim();
-    const LName = document.getElementById("Name_LNameSection").value.trim();
-    const email = userEmailInput.value.trim();
-    const password = userPasswordInput.value.trim();
-    
-     if (!FName || !LName) {
+  const FName = document.getElementById("Name_FNameSection").value.trim();
+  const LName = document.getElementById("Name_LNameSection").value.trim();
+  const email = userEmailInput.value.trim();
+  const password = userPasswordInput.value.trim();
+
+  if (!FName || !LName) {
     fieldErrorModal();
     return;
   }
 
-    const { data, error } = await supabaseClient.auth.signUp({
-        email,
-        password,
-        options: {
-            data: {
-                first_name: FName,
-                last_name: LName,
-            },
-        },
-    });
-    
-    if (error) {
-        console.error(error.message);
-    } else {
-        console.log(data);
-        window.location.href = "../SignIn/SignIn.html";
-    }
-};
+  const { data, error } = await supabaseClient.auth.signUp({
+    email,
+    password,
+    options: {
+      data: {
+        first_name: FName,
+        last_name: LName,
+      },
+    },
+  });
 
-Next_btn.addEventListener("click" , showErrors);
+  if (error) {
+    console.error(error.message);
+  } else {
+    console.log(data);
+    window.location.href = "../index.html";
+  }
+}
+
+Next_btn.addEventListener("click", showErrors);

@@ -1,130 +1,127 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  box-sizing: border-box;
   padding-top: 80px;
-  background-color: #6d9ac4;
+  background-color: #f4f1ee;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
 }
 
 /* Navbar */
-
 .nav_logo {
   width: 90px;
   height: 70px;
 }
 
-/* Main */
-
+/* Main Container */
 .Center_div {
   background-color: #ffffff;
   max-width: 600px;
   padding: 30px 65px;
   border-radius: 15px;
   margin: 50px auto 0;
-  flex: 1 1 220px;
+  border: 2px solid #c7a17a;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .centerDivContent {
   padding: 0 80px;
 }
 
+/* Heading */
 .SignUp_heading {
-  font-family: "Gill Sans", "Gill Sans MT", "Calibri", "Trebuchet MS",
-    sans-serif;
-  font-weight: 550;
-  color: rgb(0, 0, 0);
-  font-size: larger;
-  margin: 0 110px 20px;
-}
-
-.SignUp_emailSection {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 600;
+  color: #5d4037;
+  font-size: 22px;
+  text-align: center;
   margin-bottom: 20px;
 }
 
-.SignUp_emailSection input {
-  border-radius: 8px;
-  padding: 3px 4px;
-  font-weight: 500;
-  margin: 0 20px;
-  width: 260px;
+/* Input Sections */
+.SignUp_emailSection,
+.SignUp_passwordSection {
+  margin-bottom: 20px;
   text-align: center;
 }
 
-.SignUp_emailSection input:hover {
-  font-weight: 700;
-}
-
+.SignUp_emailSection input,
 .SignUp_passwordSection input {
   border-radius: 8px;
-  padding: 3px 4px;
+  padding: 8px;
   font-weight: 500;
-  margin: 0 20px;
   width: 260px;
   text-align: center;
+  border: 2px solid #c7a17a;
+  background-color: #fdfbf8;
 }
 
+.SignUp_emailSection input:hover,
+.SignUp_passwordSection input:hover,
+.SignUp_emailSection input:hover,
 .SignUp_passwordSection input:hover {
-  font-weight: 700;
+  border-color: #8d6e63;
+  outline: none;
 }
 
-#Next_btn , .Next_btn {
+/* Next Button */
+#Next_btn,
+.Next_btn {
   max-width: 263px;
-  border: 1px solid cadetblue;
+  border: 1px solid #c7a17a;
   margin: 30px 20px;
-  padding: 4px 100px;
+  padding: 8px 100px;
   border-radius: 8px;
-  background-color: aquamarine;
-}
-
-#Next_btn:hover {
-  background-color: cadetblue;
+  background-color: #a0522d;
   color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-.line {
-  margin: 0;
-  padding: 0;
-  position: relative;
-  border: 1px solid black;
+#Next_btn:hover,
+.Next_btn:hover {
+  background-color: #7b3f1d;
 }
 
-.OR_div {
-  border: 1px solid gray;
-  padding: 0px 6px;
-  font-size: 12px;
-  position: absolute;
-  top: 59.5%;
-  left: 48%;
-  width: fit-content;
-  background-color: black;
-  color: #ffffff;
-  border-radius: 5px;
-}
-
+/* Social Icons */
 .social_icons {
   margin: 20px 100px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
-.google_icon {
-  width: 50px;
-  height: 40px;
-}
-
+.google_icon,
 .facebook_icon {
   width: 50px;
   height: 40px;
+  cursor: pointer;
 }
 
+/* Already Have Account Section */
 .haveAccount_div {
   display: flex;
   gap: 10px;
   margin: 20px 60px;
+  justify-content: center;
+  font-weight: 500;
 }
 
+.haveAccount_div a {
+  color: #a0522d;
+  text-decoration: none;
+  font-weight: 600;
+}
 
+.haveAccount_div a:hover {
+  color: #7b3f1d;
+}
+
+/* Tablet (<= 992px) */
 @media (max-width: 992px) {
   .Center_div {
     max-width: 500px;
@@ -136,7 +133,6 @@ body {
   }
 
   .SignUp_heading {
-    margin: 0 auto 20px;
     text-align: center;
   }
 
@@ -146,23 +142,21 @@ body {
     margin: 0;
   }
 
-  #Next_btn , .Next_btn {
-    padding: 6px 60px;
+  #Next_btn,
+  .Next_btn {
+    padding: 8px 60px;
   }
 
   .social_icons {
     margin: 15px auto;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
   }
 
   .haveAccount_div {
     margin: 20px auto;
-    justify-content: center;
   }
 }
 
+/* Mobile (<= 576px) */
 @media (max-width: 576px) {
   .Center_div {
     max-width: 95%;
@@ -175,7 +169,6 @@ body {
 
   .SignUp_heading {
     font-size: 20px;
-    text-align: center;
   }
 
   .SignUp_emailSection input,
@@ -185,22 +178,18 @@ body {
     padding: 8px;
   }
 
-  #Next_btn , .Next_btn {
+  #Next_btn,
+  .Next_btn {
     display: block;
     margin: 20px auto;
     padding: 10px 40px;
     border-radius: 8px;
-    border: 1px solid cadetblue;
-    background-color: aquamarine;
+    background-color: #a0522d;
   }
 
   .social_icons img {
     width: 40px;
     height: 35px;
-  }
-
-  .OR_div {
-    display: none;
   }
 
   .haveAccount_div {

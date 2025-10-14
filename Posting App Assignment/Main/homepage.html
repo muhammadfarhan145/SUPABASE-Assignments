@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/css-toggle-switch/latest/toggle-switch.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand"
+            ><img src="../Assets/logo.png" class="nav_logo"
+          /></a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="../SignUp/SignUp.html">Sign Up</a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="./homepage.html"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="DocumentationBtn">Documentation</a>
+              </li>
+            </ul>
+
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+              <li class="nav-item">
+                <button class="signOutButton btn btn-danger" id="signOutButton">
+                  Sign Out
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="Center_div">
+        <div class="centerDivContent">
+          <p class="postapp_heading">POST APP</p>
+          <div class="nameSection">
+            <input
+              type="text"
+              id="userNameInput"
+              class="userNameInput"
+              placeholder="Enter Your Name"
+              required
+            />
+          </div>
+          <div class="postTextArea">
+            <textarea
+              id="postTextInput"
+              class="postTextInput"
+              rows="4"
+              placeholder="Write something here!"
+            ></textarea>
+          </div>
+          <div class="toggleUserEmail">
+            <div class="toggle">
+              <label class="switch-light switch-candy">
+                <input type="checkbox" id="myToggle" />
+                <span>
+                  <span class="privateToggle">Private</span>
+                  <span class="publicToggle">Public</span>
+                  <a></a>
+                </span>
+              </label>
+            </div>
+            <p id="userCurrentEmail_P">paap@gmail.com</p>
+          </div>
+          <button id="postBtn">POST</button>
+        </div>
+      </div>
+
+      <div id="centerPostDiv"></div>
+    </main>
+    <!-- Modals -->
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+      <div
+        id="congratsForLogin"
+        class="toast"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="toast-header">
+          <img
+            src="../Assets/logo.png"
+            class="rounded me-2 toast_logo"
+            alt="..."
+          />
+          <strong class="me-auto">Quick Post</strong>
+          <p id="toastTime"></p>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="toast-body">
+          <p>Congratulations You Logged In!</p>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="fielderrorModal"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content p-3 text-center">
+          <p>Fields Cannot be empty</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+      <div
+        id="postUploaded"
+        class="toast"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="toast-header">
+          <img
+            src="../Assets/logo.png"
+            class="rounded me-2 toast_logo"
+            alt="..."
+          />
+          <strong class="me-auto">Quick Post</strong>
+          <p id="toastTime"></p>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="toast-body">
+          <p>Post Uploaded Successfully !</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="signOutModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content p-3 text-center">
+          <p>User Signed Out Succesfully!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scrollable modal -->
+    <!-- Documentation Modal -->
+    <div
+      class="modal fade"
+      id="documentationModal"
+      tabindex="-1"
+      aria-labelledby="documentationModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="documentationModalLabel">
+              Code Documentation
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p>
+              This JavaScript file connects the frontend of the posting app with
+              Supabase to manage user authentication, post creation, likes, and
+              post visibility. It uses Supabase as a backend database and
+              authentication system, while Bootstrap is used for modals and
+              toast notifications.
+            </p>
+
+            <p>
+              The script begins by initializing the Supabase client using
+              <code>supabase.createClient()</code> with the project URL and anon
+              key. This client acts as the bridge between the frontend and
+              Supabase backend, enabling all database queries and authentication
+              actions.
+            </p>
+
+            <p>
+              The project makes use of several external libraries for UI and
+              user experience. The toggle switch for selecting between public
+              and private posts is implemented using
+              <strong>Bootstrap’s form-switch component</strong>, which provides
+              built-in styling and behavior for toggles. Font Awesome is used to
+              display interactive icons such as hearts (for likes) and comment
+              bubbles. Bootstrap also powers the modal popups, toasts, and
+              confirmation dialogs throughout the application.
+            </p>
+
+            <p>
+              Several DOM elements are referenced at the start for easier access
+              throughout the script. These include user inputs for post
+              creation, the toggle switch that controls whether a post is public
+              or private, the container where posts are displayed, and buttons
+              for actions like posting and signing out.
+            </p>
+
+            <p>
+              The <code>checkSession()</code> function ensures that only
+              logged-in users can access the main page. It retrieves the current
+              session via Supabase Auth; if no session exists, the user is
+              redirected to the signup page.
+            </p>
+
+            <p>
+              Helper functions like <code>showToast()</code> and
+              <code>showModal()</code> are simple wrappers around Bootstrap’s
+              components, used to display quick notifications or pop-up modals
+              when needed, such as after posting or logging out.
+            </p>
+
+            <p>
+              The <code>userCurrentAccount()</code> function retrieves the
+              logged-in user and displays their email address on the interface.
+              This helps users confirm which account they’re currently using.
+            </p>
+
+            <p>
+              The sign-out process is handled by <code>signOutUser()</code>,
+              which first confirms the user’s intent with a browser prompt. If
+              confirmed, it calls <code>supabase.auth.signOut()</code> to remove
+              the local session, then displays a confirmation modal and
+              redirects the user to the login page after a short delay.
+            </p>
+
+            <p>
+              When a user creates a post by clicking the “Post” button, the
+              <code>postBtn</code> event listener validates that both the name
+              and post text fields are not empty. It also checks the toggle
+              switch to determine the post’s visibility (Public or Private). The
+              post is then inserted into the Supabase “posts” table along with
+              the user ID. After posting, the input fields are cleared and the
+              posts list reloads automatically.
+            </p>
+
+            <p>
+              The <code>loadPost()</code> function retrieves all posts from the
+              Supabase database, showing all public posts and any private posts
+              that belong to the currently logged-in user. Each post is
+              dynamically created as a card-like div, including the user’s name,
+              post content, and visibility tag.
+            </p>
+
+            <p>
+              For public posts, a like and comment icon are added, while private
+              posts instead display a message indicating that the post cannot be
+              liked or commented on by others.
+            </p>
+
+            <p>
+              The <code>loadLikedBy()</code> function fetches all the users who
+              liked a particular post by querying the “likes” table. For each
+              like, it looks up the corresponding user’s name from the “posts”
+              table, then displays a line under the post reading:
+              <i class="fa-solid fa-heart" style="color: #ff0a0a"></i> Liked by:
+              username1, username2, username3. If no likes exist, it simply
+              shows “No likes yet”.
+            </p>
+
+            <p>
+              The <code>attachLikeEvents()</code> function assigns click events
+              to each like button (heart icon). When clicked, it checks whether
+              the current user has already liked the post: if they have, it
+              removes their like from the database and reverts the heart to its
+              regular outline. If they haven’t liked it yet, it inserts a new
+              row in the “likes” table and turns the heart red. After each
+              action, the likes section updates in real-time to reflect the
+              current list of users who liked the post.
+            </p>
+
+            <p>
+              Overall, this code builds a simple but fully functional social
+              posting feed using Supabase. It supports authentication, real-time
+              post visibility (public/private), liking system, and personalized
+              user experiences, all with clean integration of Bootstrap for
+              user-friendly UI feedback.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.min.js"
+      integrity="sha384-VQqxDN0EQCkWoxt/0vsQvZswzTHUVOImccYmSyhJTp7kGtPed0Qcx8rK9h9YEgx+"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign Up</title>
+    <title>Sign In</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -14,14 +14,14 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="./SignUp.css" />
+    <link rel="stylesheet" href="./SignIn.css" />
   </head>
   <body>
     <header>
       <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
         <div class="container-fluid">
           <a class="navbar-brand"
-            ><img src="../Assets/logo.png" class="nav_logo"
+            ><img src="./Assets/logo.png" class="nav_logo"
           /></a>
           <button
             class="navbar-toggler"
@@ -37,15 +37,15 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
+                <a class="nav-link" href="./SignUp/SignUp.html">Sign Up</a>
+              </li>
+              <li class="nav-item">
                 <a
                   class="nav-link active"
                   aria-current="page"
-                  href="./SignUp.html"
-                  >Sign Up</a
+                  href="./index.html"
+                  >Sign In</a
                 >
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="../index.html">Sign In</a>
               </li>
             </ul>
           </div>
@@ -55,41 +55,39 @@
     <main>
       <div class="Center_div">
         <div class="centerDivContent">
-          <p class="SignUp_heading">SIGN UP</p>
-          <div class="SignUp_emailSection" id="SignUp_emailSection">
+          <p class="SignIn_heading">SIGN IN</p>
+          <div class="SignIn_emailSection">
             <input
               type="email"
-              class="SignUp_emailInput"
-              id="SignUp_emailInput"
+              class="SignIn_emailInput"
+              id="SignIn_emailInput"
               placeholder="Enter Your Email"
               required
             />
           </div>
-          <div class="SignUp_passwordSection" id="SignUp_passwordSection">
+          <div class="SignIn_passwordSection">
             <input
               type="password"
-              class="SignUp_PasswordInput"
-              id="SignUp_PasswordInput"
+              class="SignIn_PasswordInput"
+              id="SignIn_PasswordInput"
               placeholder="Enter Your Password"
               required
             />
           </div>
-          <button id="Next_btn" class="Next_btn">
-            Next <i class="fa-solid fa-arrow-right"></i>
-          </button>
-
+          <button id="SignIn_btn">SIGN IN</button>
           <div class="social_icons">
-            <img src="../Assets/google_Icon.png" class="google_icon" />
-            <img src="../Assets/facebook_icon.png" class="facebook_icon" />
+            <img src="./Assets/google_Icon.png" class="google_icon" />
+            <img src="./Assets/facebook_icon.png" class="facebook_icon" />
           </div>
-          <div class="haveAccount_div">
-            <p>Already a User?</p>
-            <a href="../index.html"> LOGIN </a>
+          <div class="needAccount_div">
+            <p>Need an Account?</p>
+            <a href="./SignUp/SignUp.html"> SIGN UP </a>
           </div>
         </div>
       </div>
     </main>
 
+    <!-- Modal -->
     <div
       class="modal fade"
       id="fielderrorModal"
@@ -128,6 +126,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="./SignUp.js"></script>
+    <script src="./SignIn.js"></script>
   </body>
 </html>
