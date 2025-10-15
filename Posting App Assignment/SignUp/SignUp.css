@@ -97,8 +97,7 @@ body {
 
 .google_icon,
 .facebook_icon {
-  width: 50px;
-  height: 40px;
+  font-size: 30px;
   cursor: pointer;
 }
 

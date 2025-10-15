@@ -23,22 +23,39 @@ const checkSession = async () => {
 };
 checkSession();
 
-const showToast = (id) => {
-  const toastLiveExample = document.getElementById(id);
+// Modals , Toasts
+
+const tellPostUpload = () => {
+  const toastLiveExample = document.getElementById("postUploaded");
   const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
   toastBootstrap.show();
 };
 
-const documentationModal = () => {
-  const docModal = new bootstrap.Modal(
-    document.getElementById("documentationModal")
-  );
-  docModal.show();
+const congratsForLogin = () => {
+  const congratsForLoginModal = document.getElementById("congratsForLogin");
+  const toastBootstrap = bootstrap.Toast.getOrCreateInstance(congratsForLoginModal);
+  toastBootstrap.show();
 };
 
-const showModal = (id) => {
-  const modal = new bootstrap.Modal(document.getElementById(id));
-  modal.show();
+const fieldErrorModal = () => {
+  const fieldsErrorModal = new bootstrap.Modal(
+    document.getElementById("fielderrorModal")
+  );
+  fieldsErrorModal.show();
+};
+
+const signOutModal = () => {
+  const SignOutModal = new bootstrap.Modal(
+    document.getElementById("signOutModal")
+  );
+  SignOutModal.show();
+};
+
+const documentationModal = () => {
+  const documentationModal = new bootstrap.Modal(
+    document.getElementById("documentationModal")
+  );
+  documentationModal.show();
 };
 
 const userCurrentAccount = async () => {
@@ -62,7 +79,7 @@ const signOutUser = async () => {
     return;
   }
 
-  showModal("signOutModal");
+  signOutModal();
   setTimeout(() => {
     window.location.href = "../index.html";
   }, 1500);
@@ -74,7 +91,7 @@ postBtn.addEventListener("click", async () => {
   const publicity = toggle.checked ? "Public" : "Private";
 
   if (userName.value.trim() === "" || userPostText.value.trim() === "") {
-    showModal("fielderrorModal");
+    fieldErrorModal()
     return;
   }
 
@@ -90,7 +107,7 @@ postBtn.addEventListener("click", async () => {
     return;
   }
 
-  showToast("postUploaded");
+  tellPostUpload();
   userName.value = "";
   userPostText.value = "";
   loadPost();
@@ -158,7 +175,7 @@ const loadPost = async () => {
 
   attachLikeEvents();
 
-  DocumentationBtn.addEventListener("click", documentationModal);
+
 };
 
 const loadLikedBy = async (postId) => {
@@ -180,19 +197,19 @@ const loadLikedBy = async (postId) => {
     return;
   }
 
-const likedByNames = [];
+  const likedByNames = [];
 
-for (let i = 0; i < likes.length; i++) {
-  const like = likes[i];
-  const { data: userPost } = await supabaseClient
-    .from("posts")
-    .select("user_name")
-    .eq("user_id", like.user_id)
-    .limit(1)
-    .single();
+  for (let i = 0; i < likes.length; i++) {
+    const like = likes[i];
+    const { data: userPost } = await supabaseClient
+      .from("posts")
+      .select("user_name")
+      .eq("user_id", like.user_id)
+      .limit(1)
+      .single();
 
-  likedByNames.push(userPost?.user_name || "Unknown");
-}
+    likedByNames.push(userPost?.user_name || "Unknown");
+  }
 
   LikedbyDiv.innerHTML = `Liked by: ${likedByNames.join(", ")}`;
 };
@@ -239,5 +256,5 @@ const attachLikeEvents = async () => {
 };
 
 loadPost();
-showToast("congratsForLogin");
-documentationModal();
+congratsForLogin();      
+DocumentationBtn.addEventListener("click", documentationModal);
