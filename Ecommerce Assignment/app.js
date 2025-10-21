@@ -1,6 +1,6 @@
 const supabaseClient = supabase.createClient(
-  "https://mkuvrvijlxluembvduld.supabase.co",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1rdXZydmlqbHhsdWVtYnZkdWxkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg4ODU2NzIsImV4cCI6MjA3NDQ2MTY3Mn0.4ic4pz1jkldt7ifyiKeksAgyYuP6pYk6ONMsGviarIY"
+  "https://queftwxqyuinynpsixqa.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF1ZWZ0d3hxeXVpbnlucHNpeHFhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk5MTQ5NDEsImV4cCI6MjA3NTQ5MDk0MX0.TWex1aIXHoopzD9q1LR2hOt6hsBY6JN3aAtaXpvM5hc"
 );
 
 const product_card = document.getElementById("Product_card");
@@ -23,7 +23,7 @@ let cart_item = 0;
 let active_tab = "all";
 let allProducts = [];
 
-//  PRice Formatter
+//  Price Formatter
 function formatprice(p) {
   return "$" + Number(p).toFixed(2);
 }

@@ -1,0 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding-top: 90px;
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* Navbar */
+.navbar {
+  color: black !important;
+  border-bottom: 1px solid #fff;
+}
+
+.logoImg {
+  height: 40px;
+  width: 110px;
+}
+
+.navLinks .nav-link:hover {
+  color: #ff6600 !important;
+}
+
+.navIcons .nav-link {
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+.navIcons .nav-link:hover {
+  color: #ff6600 !important;
+}
+
+.navproduct {
+  color: #ff6600 !important
+}
+
+
+
+/* Center Div */
+
+.CenterDiv {
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
+  margin: 0 20px 20px;
+}
+
+.ProductImg {
+  height: 500px;
+  border-radius: 8px;
+}
+
+.add2cartBtn {
+  border: none;
+  background-color: black;
+  color: #fff;
+  padding: 5px 15px;
+  border-radius: 5px;
+}
+
+.Product-likeBtn {
+  margin: 10px 0;
+  border-radius: 3px;
+  border: 1px solid black;
+  padding: 3px 8px;
+  width: fit-content;
+}
+
+.Product-Category {
+  background-color: black;
+  color: #fff;
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+
+.SocialIcons {
+  display: flex;
+  gap: 10px;
+  width: fit-content;    
+}
+
+.SocialIcons i {
+  font-size: 25px;
+}
+
+.SocialIcons i:hover {
+  color: #ff6600;
+}

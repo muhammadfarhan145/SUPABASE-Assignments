@@ -1,0 +1,643 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* Navbar */
+.navbar {
+  color: black !important;
+  border-bottom: 1px solid #fff;
+}
+
+.logoImg {
+  height: 40px;
+  width: 110px;
+}
+
+.Navhome {
+    color:#ff6600 !important;
+}
+
+.navLinks .nav-link:hover {
+  color: #ff6600 !important;
+}
+
+.navIcons .nav-link {
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+.navIcons .nav-link:hover {
+  color: #ff6600 !important;
+}
+
+.HomeBanner {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.bannerImg {
+  width: 100%;
+  height: 600px;
+  margin-top: 65px;
+  object-fit: cover;
+}
+
+.banner_content {
+  position: absolute;
+  margin-top: 30px;
+  width: 90%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+}
+
+.headerbannerH3 {
+  font-size: 25px;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.headerbannerH1 {
+  font-size: 64px;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.headerbannerBtn {
+  padding: 10px 35px;
+  font-size: 18px;
+  background-color: #FFFFFF;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Choose Your Essentials Section  */
+
+.chooseYourEssentialsSection {
+  padding: 60px 10px;
+  width: fit-content;
+  margin: 0;
+}
+
+.EssentialSectionMainDiv {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  overflow: visible;
+}
+
+/* About, Banners, Cards, Posts */
+
+.AboutBannersCardPost_Divs {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 30px;
+  justify-content: space-between;
+}
+
+/* Essential Section About Us */
+
+.essentialsSection_aboutUs {
+  background-color: #fff;
+  color: #000;
+  border-radius: 10px;
+  padding: 5px;
+  height: fit-content;
+  width: fit-content;
+  text-align: center;
+  border: 1px solid #ccc;
+  top: 20px;
+}
+
+.essentialsSection_aboutUsImg {
+  width: 240px;
+  height: 355px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.essentialsSection_aboutUs h2 {
+  font-size: 25px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.essentialsSection_aboutUsDesc {
+  font-size: 16px;
+  margin-bottom: 20px;
+  font-family: sans-serif;
+  color:#333333;
+}
+
+.essentialsSection_aboutUsBtn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #131212;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: 600;
+}
+
+/* Shop Now Banner */
+
+.homeShopNowBanner img {
+  height: 445px;
+  width: 250px;
+  border-radius: 5px;
+}
+
+/* More Products */
+
+.MoreProductsCard_a {
+  text-decoration: none;
+}
+
+.MoreProduct {
+  height: 85px;
+  width: 250px;
+  border: 1px solid #ccc;
+  display: flex;
+  border-radius: 8px;
+}
+
+.MoreProductcardImg {
+  height: 84px;
+  width: 84px;
+}
+
+.MoreProductcard-content {
+  padding: 20px 10px 10px;
+}
+
+.MoreProductTitle {
+  color: #000;
+  font-size: 16px;
+  margin: 0;
+}
+
+.MoreProductPrice {
+  color: #333333;
+  font-size: 14px;
+}
+
+/* Latest Post */
+
+.LatestPost {
+  width: 250px;
+  border: 1px solid #ccc;
+  padding: 8px 5px; 
+  border-radius: 8px;
+}
+
+.LatestPost h3 {
+  font-size: 25px;
+}
+
+.homelatestPostBannerImg {
+  width: 100%;
+  height: 150px;
+  border-radius: 5px;
+}
+
+.latestPostContent {
+  margin-top: 30px;
+}
+
+.latestPostContent_B_p {
+  font-size: 18px;
+  font-weight: 700;
+  font-family: sans-serif;
+}
+
+.latestPostContent_Time {
+  font-size: 12px;
+  color: #333333;
+}
+
+ /* Essential Section Center Div */
+
+.chooseYourEssentialsDiv {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-title {
+  font-size: 40px;
+  margin-bottom: 20px;
+  color: #000;
+}
+
+.EssentialsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  width: 800px;
+}
+
+.EssentialDiv {
+  background-color:#fff;
+  border-radius: 10px;
+  padding-top: 15px;
+  width: 170px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.EssentialDiv:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(255, 102, 0, 0.3);
+}
+
+.essentialsImg {
+  align-items: center;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 100px;
+  margin-bottom: 10px;
+}
+
+.EssentialTitle {
+  font-size: 17px;
+  font-weight: 600;
+  color: #000000;
+}
+
+/* New Arrival Section  */
+
+.Home_NewArrivals {
+  margin-top: 30px;
+  width: 800px;
+}
+
+.newArrrivalbannerImage {
+  height: 190px;
+  width: 750px;
+  border-radius: 8px;
+}
+
+.Home_NewArrivals h2 {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.NewArrivalsCards {
+  display: flex;
+  margin: 0 20px;
+  justify-content: space-between;
+}
+
+.NewArrivalsCard_div {
+  width: 240px;
+  height: 370px;
+  border: 1px solid #ccc;
+  padding: 5px 5px 10px;
+  border-radius: 3px;
+}
+
+.NewArrivalsCard_div img {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.NewArrivalsCardTitle {
+  font-size: 16px;
+  text-decoration: none;
+  color: #000;
+}
+
+.NewArrivalsCardPrice {
+  color:#333333;
+  font-size: 14px;
+}
+
+.NewArrivalsCartBtn {
+  border: none;
+  padding: 5px 10px;
+  border-radius: 8px;
+  background-color: #131212;
+  color: #fff;
+}
+
+.NewArrivalsCartBtn:hover {
+  color: #000;
+  background-color: #ccc;
+  border: 1px solid #000;
+}
+
+.NewArrivals_Btn {
+  text-decoration: none;
+  color: #fff;
+}
+
+.NewArrivals_BTN_Div {
+  padding: 10px 25px;
+  margin: 20px auto;
+  width: fit-content;
+  background-color: #000;
+  border-radius: 8px;
+}
+
+/* Shop Now banners */
+
+ .CenterDivShopNowCards {
+  width: 750px;
+  height: fit-content;
+  display: flex;
+  position: relative;
+  gap: 10px;
+  overflow: hidden;
+  margin: 0 auto 30px;
+}
+
+.CenterDivShopNowCard {
+  position: relative;
+  overflow: hidden;
+  height: fit-content;
+}
+
+.CenterDivShopNowCardImg {
+  width: 370px;
+  height: 450px;
+  display: block;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.CenterDivShopNowCard_content {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  color: white;
+  text-align: center;
+  padding: 0 10px;
+}
+
+.CenterDivShopNowCard_content h2 {
+  font-size: 25px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.CenterDivShopNowCard_content a {
+  text-decoration: none;
+}
+
+/* Center Product Cards Grid */
+
+.CenterProductCardDiv {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 800px;
+}
+
+.CenterProductCard {
+  background-color:#fff;
+  border-radius: 5px;
+  padding: 15px 5px 10px;
+  width: 250px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+.CenterProductCard:hover {
+  box-shadow: 0 8px 16px rgba(255, 102, 0, 0.3);
+}
+
+.CenterProductCard img {
+  align-items: center;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.productCard_content {
+  text-align: left;
+}
+
+.productCard_content_title {
+  color: #000;
+  font-weight: 600;
+  margin: 0;
+}
+
+.productCard_content_price {
+  color: #333333;
+}
+
+.CenterProductCardBtns {
+  margin: 0 auto;
+  /* width: fit-content; */
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.productCard_content .ViewProductBtn {
+  text-decoration: none;
+  text-align: center;
+  color: #fff;
+  background-color: #000;
+  padding: 5px 10px;
+  border-radius: 8px;
+}
+
+.productCard_content .ViewProductBtn:hover {
+  color: #ff6600;
+}
+
+.productCard_content .centerGridcartbtn {
+  border: none;
+  padding: 5px 10px;
+  border-radius: 8px;
+  background-color: #000;
+  color: #fff;
+  z-index: 4;
+}
+
+.productCard_content .centerGridcartbtn:hover {
+  color: #ff6600;
+}
+
+/* Essential Section Sales Div  */
+
+.essentialSection_SalesDiv {
+  background-color: #fff;
+  color: #000;
+  border-radius: 10px;
+  padding: 5px;
+  height: fit-content;
+  width: 300px;
+  text-align: center;
+  justify-content: right;
+  top: 20px;
+  position: sticky;
+  align-self: flex-start;
+  z-index: 2;
+}
+
+.essentialSection_ShopNowDiv {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.essentialSection_SalesDiv_content img {
+  width: 250px;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.essentialSection_ShopNowDiv {
+  text-align: center;
+  padding: 5px 5px 8px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.essentialSection_SalesDiv_content img {
+  width: 250px;
+  height: auto;
+}
+
+.SaleSection_ProdTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+  text-decoration: none;
+}
+
+.SaleSection_ProdPrice {
+  color: #000;
+}
+
+.SaleSection_Btn {
+  color: #fff;
+  background-color: #000;
+  border-radius: 8px;
+  padding: 5px 10px;
+  border: none;
+}
+
+.SaleSection_Btn:hover {
+  color: #000;
+  background-color: #ccc;
+  border: 1px solid #000;
+}
+
+.HomePageButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.HomePageButtons div {
+  color: #000;
+  border-radius: 100px;
+  padding: 15px 18px;
+  width: fit-content;
+  height: fit-content;
+  background-color: #ccc;
+}
+
+/* Home Page Side Buttons  */
+
+.HomePageButtons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: fit-content;
+  height: fit-content;
+  position: sticky;
+  z-index: 2;
+  left: 95%;
+  bottom: 10%;
+}
+
+.HomePageButtons div:hover , .HomePageButtons i:hover {
+  background-color: #0B5ED7;
+  color: #000;
+}
+
+.HomePageButtons_CartBtn, .HomePageButtons_addAccountBtn {
+  padding: 15px 18px;
+  border-radius: 100px;
+  background-color: #ccc;
+  border: none;
+}
+
+.HomePageButtons i {
+  color: #fff;
+}
+
+
+
+/* Off Canvas  */
+
+.CartOffCanvas {
+  background-color: #3D1F19;
+}
+
+.offcanvas-title {
+  color: #ff6600;
+}
+
+.cartProductCards {
+  display: flex;
+  flex-direction: column;
+  color: #ccc;
+
+}
+
+/* .cartProductCard {
+  display: flex;
+} */
+
+.cartProduct-img-title-icon {
+  display: flex;
+}
+
+.cartProductsImg {
+  width: 80px;
+  height: 80px;
+}
+
+.cartProduct-TitleandIcon {
+  align-items: end;
+  display: flex;
+  justify-content:flex-end;
+}
+
+.cartProduct-TitleandIcon i {
+  align-items: end;
+}
+
+.cartProductPriceDiv {
+  margin-top: 20px;
+}
