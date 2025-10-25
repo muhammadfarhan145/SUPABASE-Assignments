@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product</title>
-     <link rel="icon" type="image/jpg" href="../Assets/logo.png">
+    <link rel="icon" type="image/png" href="/Assets/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="stylesheet" href="./product.css">
@@ -13,69 +13,156 @@
     <header> 
         <nav class="navbar navbar-expand-lg bg-dark fixed-top navbar">
             <div class="container-fluid d-flex justify-content-between align-items-center">
-                <img src="../Assets/logo.png" class="logoImg" alt="Logo">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                <!-- Navbar navigation -->
+                <img src="/Assets/logo.png" class="logoImg" alt="Logo">
+                <button style="background-color: antiquewhite;" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
                 <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
                     <div class="navbar-nav mx-auto gap-4 navLinks">
-                        <a class="nav-link text-white" href="../index.html">Home</a>
-                        <a class="nav-link active text-white navproduct" aria-current="page" href="#">Product</a>
-                        <a class="nav-link text-white" href="../NavPages/Shops/NavShops.html">Shop</a>
-                        <a class="nav-link text-white" href="../NavPages/NewArrivals/NewArrivals.html">New Arrivals</a>
-                        <a class="nav-link text-white" href="../NavPages/ContactUs/ContactUs.html">Contact Us</a>
-                        <a class="nav-link text-white" href="../NavPages/AboutUs/AboutUs.html">About Us</a>
+                        <a class="nav-link text-white" href="/index.html">Home</a>
+                        <a class="nav-link text-white" href="../NavPages/Shops/Shops.html">Shop</a>
+                        <a class="nav-link text-white" href="/NavPages/NewArrivals/NewArrivals.html">New Arrivals</a>
+                        <a class="nav-link text-white" href="/NavPages/ContactUs/ContactUs.html">Contact Us</a>
+                        <a class="nav-link text-white" href="/NavPages/AboutUs/AboutUs.html">About Us</a>
+                        <a class="nav-link text-white homeNavDashboardLink" id="homeNavDashboardLink">Dashboard</a>
                     </div>
                     <div class="navbar-nav navIcons">
-                        <a class="nav-link text-white" href="../NavPages/Shops/NavShops.html"><i class="fa-solid fa-magnifying-glass"></i></a>
-                        <a class="nav-link text-white" href="../NavPages/Cart/Cart.html"><i class="fa-regular fa-user"></i></a>
-                        <a class="nav-link text-white" href="../NavPages/Cart/Cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+                        <a class="nav-link text-white" href="/NavPages/Shops/Shops.html"><i class="fa-solid fa-arrow-left fa-lg"></i></a>
+                        <a class="nav-link text-white" href="/NavPages/SignIn/SignIn.html"><i class="fa-solid fa-user-plus"></i></i></a>
+                        <button id="navCartBtn" class="btn btn-primary nav-link text-white navCartBtn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </button>
                     </div>
                 </div>
             </div>
         </nav>
     </header>
+
     <main>
         <div class="MainDiv">
-            <div class="CenterDiv">
-                <img src="../Assets/bags-1.jpg" class="ProductImg">
-                <div class="productDetailsDiv">
-                    <h1 class="Product-Title">Belt</h1>
-                    <p class="Product-Price">$545</p>
-                    <p class="Product-Description">Varius rutrum litora nisi laoreet montes risus primis, pharetra conubia parturient dapibus diam neque, aliquam ut commodo curabitur id tempus. Cubilia dictum faucibus a auctor interdum ante accumsan cum risus porttitor, velit sem hendrerit integer mus pellentesque habitant lectus varius, sodales litora purus sollicitudin volutpat luctus dapibus laoreet per.</p>
-                    <button class="add2cartBtn">Add to cart</button>
-                    <div class="Product-likeBtn">
-                        <i class="fa-regular fa-heart"></i>
-                    </div>
-                    <p class="Product-Category_P">Category: <span class="Product-Category">lala</span></p>
-                    <div class="SocialIcons">
-                        <a>
-                            <i class="fa-brands fa-facebook fa-lg"></i>
-                        </a>
-                        <a>
-                            <i class="fa-brands fa-linkedin fa-lg"></i>
-                        </a>    
-                        <a>
-                            <i class="fa-brands fa-github fa-lg"></i>
-                        </a>    
-                        <a>
-                            <i class="fa-brands fa-whatsapp fa-lg"></i> 
-                        </a>                       
-                    </div>
-                </div>
+            <div class="CenterDiv" id="CenterDiv">         
             </div>
         </div>
     </main>
 
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="container footer-grid">
+                <div class="footer-section">
+                    <h2 class="footer-heading">About Us</h2>
+                    <p class="footer-text">We are a premium brand offering a curated selection of leather goods, crafted with the finest materials and attention to detail.</p>  
+                </div>
+                <div class="footer-section">
+                    <h2 class="footer-heading">Quick Links</h2>
+                    <ul class="footer-links">
+                        <li><a href="#">Offer Zone</a></li>
+                        <li><a href="#">SiteMap</a></li>
+                        <li><a href="#">New Launch</a></li>
+                        <li><a href="#">Login</a></li>
+                        <li><a href="#">Career</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h2 class="footer-heading">Help</h2>
+                    <ul class="footer-links">
+                        <li><a href="#">Return/Exchange</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Shipping & Delivery</a></li>
+                        <li><a href="#">Lost Password</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h2 class="footer-heading">Contact Details</h2>
+                    <p class="footer-text">
+                        Address: Gulshan-E-Iqbal, Karachi<br /> 
+                        Contact: My Phone Number<br /> 
+                        E-mail: muhammadfarhanworks@gmail.com
+                    </p>
+                    <img src="/Assets/logo.png" alt="Logo" class="footer-logo" />
+                </div>
+            </div> 
+        </div>
+        <div class="footer-bottom">
+            <div class="container footer-bottom-flex">
+                <p class="footer-copy">© 2025 Leather Shop | Developed by <span>Farhan</span></p>
+                <ul class="footer-socials">
+                    <li><a href="https://www.linkedin.com/in/muhammad-farhan-000b1438a/"><i class="fa-brands fa-linkedin"></i></a></li>
+                    <li><a href="https://github.com/muhammadfarhan145"><i class="fa-brands fa-github"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-whatsapp"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 
+    <!-- Modals and Toasts -->
+    <div class="modal fade" id="productAddedModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content p-3 text-center">
+                <p>Product added to cart!</p>
+            </div>
+        </div>
+    </div>
 
+    <div class="modal fade" id="productAddedErrorModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content p-3 text-center">
+                <p>Oops! Something went wrong while adding the product. Please try again.</p>
+            </div>
+        </div>
+    </div>
 
+    <div class="modal fade" id="signInFristModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content p-3 text-center">
+                <p>Sign In First</p>
+            </div>
+        </div>
+    </div>
 
+    <div class="modal fade" id="cartItemDeleteErrorModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content p-3 text-center">
+                <p>Oops! Something went wrong while deleting the product. Please try again.</p>
+            </div>
+        </div>
+    </div>
 
+    <div class="modal fade" id="signOutModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content p-3 text-center">
+                <p>User Signed Out Successfully!</p>
+            </div>
+        </div>
+    </div>
 
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="cartItemAddedToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="/Assets/logo.png" class="rounded me-2 toast_logo" alt="Logo"/>
+                <strong class="me-auto">Leathers</strong>
+                <p id="toastTime"></p>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                <p>Item Added Successfully!</p>
+            </div>
+        </div>
+    </div>
 
-
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="cartItemDeletedToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="/Assets/logo.png" class="rounded me-2 toast_logo" alt="Logo"/>
+                <strong class="me-auto">Leathers</strong>
+                <p id="toastTime"></p>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                <p>Item Deleted Successfully!</p>
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.min.js" integrity="sha384-VQqxDN0EQCkWoxt/0vsQvZswzTHUVOImccYmSyhJTp7kGtPed0Qcx8rK9h9YEgx+" crossorigin="anonymous"></script>

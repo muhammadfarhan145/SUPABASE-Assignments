@@ -1,0 +1,423 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
+}
+
+main {
+  flex: 1; 
+}
+
+/* Navbar */
+.navbar {
+  color: black !important;
+  border-bottom: 1px solid #fff;
+}
+
+.logoImg {
+  height: 40px;
+  width: 110px;
+}
+
+.Navhome {
+  color: #ff6600 !important;
+}
+
+.navLinks .nav-link:hover {
+  color: #ff6600 !important;
+}
+
+.navIcons .nav-link {
+  font-size: 20px;
+  margin-left: 10px;
+  align-self: center;
+}
+
+.navIcons .nav-link:hover {
+  color: #ff6600 !important;
+}
+
+.navCartBtn:hover {
+  color: #ff6600 !important;
+  background-color: #212529;
+}
+
+/* About Us Page Styles */
+.aboutHeroSection {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.aboutBannerImg {
+  width: 100%;
+  height: 400px;
+  margin-top: 65px;
+  object-fit: cover;
+}
+
+.aboutBannerContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+}
+
+.aboutBannerH1 {
+  font-size: 48px;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.aboutBannerP {
+  font-size: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.aboutStorySection {
+  padding: 60px 20px;
+  background-color: #f8f8f8;
+}
+
+.section-title {
+  font-size: 40px;
+  margin-bottom: 20px;
+  color: #000;
+  text-align: center;
+}
+
+.storyText {
+  font-size: 16px;
+  color: #333;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+.aboutCraftsmanshipSection {
+  padding: 60px 20px;
+}
+
+.craftsmanshipContent {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.craftsmanshipText {
+  flex: 1;
+}
+
+.craftsmanshipText p {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.8;
+}
+
+.craftsmanshipImg {
+  flex: 1;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.aboutProductsSection {
+  padding: 60px 20px;
+  background-color: #f8f8f8;
+}
+
+.productsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.productItem {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+}
+
+.productImg {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.productItem h3 {
+  font-size: 20px;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.productItem p {
+  font-size: 14px;
+  color: #333;
+}
+
+.aboutTeamSection {
+  padding: 60px 20px;
+}
+
+.teamText {
+  font-size: 16px;
+  color: #333;
+  max-width: 800px;
+  margin: 0 auto 30px;
+  line-height: 1.8;
+  text-align: center;
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.teamMember {
+  text-align: center;
+}
+
+.teamImg {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.teamMember h3 {
+  font-size: 18px;
+  color: #000;
+  margin-bottom: 5px;
+}
+
+.teamMember p {
+  font-size: 14px;
+  color: #333;
+}
+
+/* Footer */
+.footer {
+  background: #111;
+  color: #ddd;
+  font-family: 'Poppins', sans-serif;
+  padding-top: 50px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  padding: 0 20px;
+}
+
+.footer-section {
+  line-height: 1.8;
+}
+
+.footer-heading {
+  font-size: 22px;
+  color: #fff;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.footer-heading::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 2px;
+  background: #e0a800;
+  margin-top: 5px;
+}
+
+.footer-text {
+  color: #ccc;
+  font-size: 14px;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: #ccc;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-links a:hover {
+  color: #e0a800;
+}
+
+.footer-logo {
+  width: 150px;
+  margin-top: 15px;
+}
+
+.footer-bottom {
+  background: #0c0c0c;
+  padding: 20px 0;
+  margin-top: 40px;
+  border-top: 1px solid #333;
+}
+
+.footer-bottom-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-copy {
+  font-size: 14px;
+}
+
+.footer-copy span {
+  color: #e0a800;
+  font-weight: 600;
+}
+
+.footer-socials {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+.footer-socials a {
+  color: #ccc;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.footer-socials a:hover {
+  color: #e0a800;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .aboutBannerImg {
+    height: 300px;
+  }
+
+  .aboutBannerH1 {
+    font-size: 32px;
+  }
+
+  .aboutBannerP {
+    font-size: 16px;
+  }
+
+  .section-title {
+    font-size: 30px;
+  }
+
+  .storyText {
+    font-size: 14px;
+  }
+
+  .craftsmanshipContent {
+    flex-direction: column;
+  }
+
+  .craftsmanshipImg {
+    max-width: 100%;
+  }
+
+  .productsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .productImg {
+    height: 150px;
+  }
+
+  .teamGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .teamImg {
+    height: 150px;
+  }
+
+  .navbar-nav {
+    text-align: center;
+  }
+
+  .navIcons {
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-logo {
+    margin: 15px auto;
+  }
+
+  .footer-bottom-flex {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .aboutBannerH1 {
+    font-size: 24px;
+  }
+
+  .aboutBannerP {
+    font-size: 14px;
+  }
+
+  .section-title {
+    font-size: 24px;
+  }
+
+  .storyText, .craftsmanshipText p, .teamText {
+    font-size: 13px;
+  }
+
+  .productItem h3 {
+    font-size: 18px;
+  }
+
+  .productItem p {
+    font-size: 13px;
+  }
+
+  .teamMember h3 {
+    font-size: 16px;
+  }
+
+  .teamMember p {
+    font-size: 13px;
+  }
+}

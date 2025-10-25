@@ -1,3 +1,4 @@
+/* Existing styles from your provided code */
 * {
   margin: 0;
   padding: 0;
@@ -142,21 +143,21 @@ main {
   width: 40px;
 }
 
-/* New Arrivals Page Styles */
-.newArrivalsHeroSection {
+/* Shop Page Styles */
+.shopHeroSection {
   position: relative;
   overflow: hidden;
   width: 100%;
 }
 
-.newArrivalsBannerImg {
+.shopBannerImg {
   width: 100%;
   height: 400px;
   margin-top: 65px;
   object-fit: cover;
 }
 
-.newArrivalsBannerContent {
+.shopBannerContent {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -165,19 +166,19 @@ main {
   color: white;
 }
 
-.newArrivalsBannerH1 {
+.shopBannerH1 {
   font-size: 48px;
   margin-bottom: 15px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
-.newArrivalsBannerP {
+.shopBannerP {
   font-size: 20px;
   margin-bottom: 20px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
-.newArrivalsBannerBtn {
+.shopBannerBtn {
   padding: 10px 35px;
   font-size: 18px;
   background-color: #000;
@@ -188,12 +189,12 @@ main {
   display: inline-block;
 }
 
-.newArrivalsBannerBtn:hover {
+.shopBannerBtn:hover {
   background-color: #ff6600;
   color: #000;
 }
 
-.newArrivalsProductsSection {
+.shopProductsSection {
   padding: 60px 20px;
   background-color: #f8f8f8;
 }
@@ -205,7 +206,7 @@ main {
   text-align: center;
 }
 
-.newArrivalsProductCardDiv {
+.shopProductCardDiv {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
@@ -213,7 +214,7 @@ main {
   margin: 0 auto;
 }
 
-.newArrivalsProductCard {
+.shopProductCard {
   background-color: #fff;
   border-radius: 5px;
   padding: 15px;
@@ -222,11 +223,11 @@ main {
   transition: box-shadow 0.3s;
 }
 
-.newArrivalsProductCard:hover {
+.shopProductCard:hover {
   box-shadow: 0 8px 16px rgba(255, 102, 0, 0.3);
 }
 
-.newArrivalsProductCard img {
+.shopProductCard img {
   width: 100%;
   height: 200px;
   object-fit: cover;
@@ -251,7 +252,7 @@ main {
   margin: 5px 0;
 }
 
-.newArrivalsProductCardBtns {
+.shopProductCardBtns {
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -270,7 +271,7 @@ main {
   color: #ff6600;
 }
 
-.newArrivalsGridCartBtn {
+.shopGridCartBtn {
   border: none;
   padding: 5px 10px;
   border-radius: 8px;
@@ -278,10 +279,11 @@ main {
   color: #fff;
 }
 
-.newArrivalsGridCartBtn:hover {
+.shopGridCartBtn:hover {
   color: #ff6600;
 }
 
+/* Footer */
 .footer {
   background: #111;
   color: #ddd;
@@ -386,19 +388,19 @@ main {
 
 /* Responsive */
 @media (max-width: 768px) {
-  .newArrivalsBannerImg {
+  .shopBannerImg {
     height: 300px;
   }
 
-  .newArrivalsBannerH1 {
+  .shopBannerH1 {
     font-size: 32px;
   }
 
-  .newArrivalsBannerP {
+  .shopBannerP {
     font-size: 16px;
   }
 
-  .newArrivalsBannerBtn {
+  .shopBannerBtn {
     padding: 8px 20px;
     font-size: 16px;
   }
@@ -407,16 +409,16 @@ main {
     font-size: 30px;
   }
 
-  .newArrivalsProductCardDiv {
+  .shopProductCardDiv {
     grid-template-columns: 1fr;
   }
 
-  .newArrivalsProductCard {
+  .shopProductCard {
     max-width: 300px;
     margin: 0 auto;
   }
 
-  .newArrivalsProductCard img {
+  .shopProductCard img {
     height: 150px;
   }
 
@@ -445,11 +447,11 @@ main {
 }
 
 @media (max-width: 576px) {
-  .newArrivalsBannerH1 {
+  .shopBannerH1 {
     font-size: 24px;
   }
 
-  .newArrivalsBannerP {
+  .shopBannerP {
     font-size: 14px;
   }
 
@@ -465,7 +467,7 @@ main {
     font-size: 14px;
   }
 
-  .ViewProductBtn, .newArrivalsGridCartBtn {
+  .ViewProductBtn, .shopGridCartBtn {
     padding: 5px 8px;
     font-size: 14px;
   }

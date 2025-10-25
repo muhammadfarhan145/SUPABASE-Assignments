@@ -6,7 +6,7 @@
 
 body {
   padding-top: 50px;
-  background-image: url("../Assets/homePageImage.jpeg");
+  background-image: url("../../Assets/homePageImage.jpeg");
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: #222;
 }

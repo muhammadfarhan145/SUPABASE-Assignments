@@ -51,7 +51,7 @@ const checkUser = async () => {
       await supabaseClient.auth.signOut();
       return;
     }
-    window.location.href = "../index.html";
+    window.location.href = "../../index.html";
   }
 };
 
@@ -69,7 +69,7 @@ const signInUser = async () => {
     console.error(error.message);
   } else {
     console.log(data);
-    window.location.href = "./Main/homepage.html";
+    window.location.href = "../../index.html";
   }
 };
 
