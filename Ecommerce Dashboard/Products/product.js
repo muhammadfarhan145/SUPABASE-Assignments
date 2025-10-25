@@ -43,15 +43,12 @@ const showDetails = async () => {
       <p class="Product-Price" id="Product-Price">$${product.price}</p>
       <p class="Product-Description" id="Product-Description">${product.description}</p>
       <button class="add2cartBtn addToCartBtn" id="add2cartBtn" data-id="${product.id}">Add to Cart</button>
-      <div class="Product-likeBtn">
-        <i class="fa-regular fa-heart"></i>
-      </div>
       <p class="Product-Category_P">Category: <span class="Product-Category" id="Product-Category">${product.category}</span></p>
       <div class="SocialIcons">
-        <a href="https://www.facebook.com/sharer/sharer.php?u=${window.location.href}"><i class="fa-brands fa-facebook fa-lg"></i></a>
-        <a href="https://www.linkedin.com/sharing/share-offsite/?url=${window.location.href}"><i class="fa-brands fa-linkedin fa-lg"></i></a>
+        <a href="#"><i class="fa-brands fa-facebook fa-lg"></i></a>
+        <a href="https://www.linkedin.com/in/muhammad-farhan-000b1438a/"><i class="fa-brands fa-linkedin fa-lg"></i></a>
         <a href="https://github.com/muhammadfarhan145"><i class="fa-brands fa-github fa-lg"></i></a>
-        <a href="https://wa.me/?text=${encodeURIComponent(window.location.href)}"><i class="fa-brands fa-whatsapp fa-lg"></i></a>
+        <a href="#><i class="fa-brands fa-whatsapp fa-lg"></i></a>
       </div>
     </div>
   `;

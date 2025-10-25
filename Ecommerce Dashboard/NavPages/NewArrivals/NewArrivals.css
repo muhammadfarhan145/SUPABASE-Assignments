@@ -282,6 +282,37 @@ main {
   color: #ff6600;
 }
 
+/* New Arrivals Page Button */
+
+.arrivalsPageButtons {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  justify-content: center;
+  width: fit-content;
+  height: fit-content;
+  position: sticky;
+  z-index: 5;
+  left: 95%;
+  bottom: 10%;
+}
+
+.arrivalsPageButtons_CartBtn, .backToHomeButton {
+  padding: 15px 18px;
+  border-radius: 100px;
+  background-color: #ccc;
+  border: none;
+  background-color: #cccccc;
+}
+
+.arrivalsPageButtons i {
+  color: #fff;
+}
+
+.shopPageButtons button:hover, .backToHomeButton:hover {
+  background-color: #0B5ED7;
+}
+
 .footer {
   background: #111;
   color: #ddd;

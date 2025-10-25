@@ -283,6 +283,37 @@ main {
   color: #ff6600;
 }
 
+/* Shop Page Buttons */
+
+.shopPageButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  width: fit-content;
+  height: fit-content;
+  position: sticky;
+  z-index: 5;
+  left: 95%;
+  bottom: 10%;
+}
+
+.shopPageButtons_CartBtn, .backToHomeButton {
+  padding: 15px 18px;
+  border-radius: 100px;
+  background-color: #ccc;
+  border: none;
+  background-color: #cccccc;
+}
+
+.shopPageButtons i {
+  color: #fff;
+}
+
+.shopPageButtons button:hover, .backToHomeButton:hover {
+  background-color: #0B5ED7;
+}
+
 /* Footer */
 .footer {
   background: #111;

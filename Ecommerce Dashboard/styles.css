@@ -7,10 +7,11 @@
 body {
   font-family: 'Poppins', sans-serif;
   scroll-behavior: smooth;
+  padding-top: 60px;
 }
 
 main {
-  flex: 1; 
+  flex: 1;
 }
 
 /* Navbar */
@@ -25,10 +26,8 @@ main {
 }
 
 .Navhome {
-    color:#ff6600 !important;
+  color: #ff6600 !important;
 }
-
-
 
 .navLinks .nav-link:hover {
   color: #ff6600 !important;
@@ -49,6 +48,7 @@ main {
   background-color: #212529;
 }
 
+/* Home Banner */
 .HomeBanner {
   position: relative;
   overflow: hidden;
@@ -58,19 +58,18 @@ main {
 .bannerImg {
   width: 100%;
   height: 600px;
-  margin-top: 65px;
   object-fit: cover;
 }
 
 .banner_content {
   position: absolute;
-  margin-top: 30px;
-  width: 90%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
   color: white;
+  width: 90%;
+  max-width: 800px;
 }
 
 .headerbannerH3 {
@@ -88,20 +87,25 @@ main {
 .headerbannerBtn {
   padding: 10px 35px;
   font-size: 18px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   color: black;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   text-decoration: none;
+  transition: background-color 0.3s;
 }
 
-/* Choose Your Essentials Section  */
+.headerbannerBtn:hover {
+  background-color: #ff6600;
+  color: #000;
+}
 
+/* Choose Your Essentials Section */
 .chooseYourEssentialsSection {
-  padding: 60px 10px 0;
-  width: fit-content;
-  margin: 0;
+  padding: 40px 10px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .EssentialSectionMainDiv {
@@ -110,36 +114,32 @@ main {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  overflow: visible;
+  gap: 20px;
 }
 
 /* About, Banners, Cards, Posts */
-
 .AboutBannersCardPost_Divs {
   display: flex;
   flex-direction: column;
-  position: relative;
-  gap: 30px;
-  justify-content: space-between;
+  gap: 20px;
+  width: 250px;
 }
 
 /* Essential Section About Us */
-
 .essentialsSection_aboutUs {
   background-color: #fff;
   color: #000;
   border-radius: 10px;
-  padding: 5px;
-  height: fit-content;
-  width: fit-content;
-  text-align: center;
+  padding: 10px;
   border: 1px solid #ccc;
-  top: 20px;
+  text-align: center;
 }
 
 .essentialsSection_aboutUsImg {
-  width: 240px;
-  height: 355px;
+  width: 100%;
+  max-width: 240px;
+  height: auto;
+  max-height: 355px;
   border-radius: 10px;
   margin-bottom: 15px;
 }
@@ -154,7 +154,7 @@ main {
   font-size: 16px;
   margin-bottom: 20px;
   font-family: sans-serif;
-  color:#333333;
+  color: #333333;
 }
 
 .essentialsSection_aboutUsBtn {
@@ -167,23 +167,24 @@ main {
   font-weight: 600;
 }
 
-/* Shop Now Banner */
+.essentialsSection_aboutUsBtn:hover {
+  background-color: #ff6600;
+}
 
+/* Shop Now Banner */
 .homeShopNowBanner img {
-  height: 445px;
-  width: 250px;
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  max-height: 445px;
   border-radius: 5px;
 }
 
 /* More Products */
-
-.MoreProductsCard_a {
-  text-decoration: none;
-}
-
 .MoreProduct {
   height: 85px;
-  width: 250px;
+  width: 100%;
+  max-width: 250px;
   border: 1px solid #ccc;
   display: flex;
   border-radius: 8px;
@@ -192,6 +193,7 @@ main {
 .MoreProductcardImg {
   height: 84px;
   width: 84px;
+  object-fit: cover;
 }
 
 .MoreProductcard-content {
@@ -210,11 +212,11 @@ main {
 }
 
 /* Latest Post */
-
 .LatestPost {
-  width: 250px;
+  width: 100%;
+  max-width: 250px;
   border: 1px solid #ccc;
-  padding: 8px 5px; 
+  padding: 8px;
   border-radius: 8px;
 }
 
@@ -225,11 +227,12 @@ main {
 .homelatestPostBannerImg {
   width: 100%;
   height: 150px;
+  object-fit: cover;
   border-radius: 5px;
 }
 
 .latestPostContent {
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .latestPostContent_B_p {
@@ -243,13 +246,16 @@ main {
   color: #333333;
 }
 
- /* Essential Section Center Div */
-
+/* Essential Section Center Div */
 .chooseYourEssentialsDiv {
   text-align: center;
   margin-bottom: 40px;
+  flex: 1;
+  width: 100%;
+  max-width: 100%;
 }
 
+/* Choose Your Essentials */
 .section-title {
   font-size: 40px;
   margin-bottom: 20px;
@@ -260,12 +266,13 @@ main {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
-  max-width: 800px;
+  gap: 15px;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 .EssentialDiv {
-  background-color:#fff;
+  background-color: #fff;
   border-radius: 10px;
   padding-top: 15px;
   width: 170px;
@@ -279,7 +286,6 @@ main {
 }
 
 .essentialsImg {
-  align-items: center;
   width: 150px;
   height: 150px;
   object-fit: cover;
@@ -293,33 +299,39 @@ main {
   color: #000000;
 }
 
-/* New Arrival Section  */
-
+/* New Arrival Section */
 .Home_NewArrivals {
   margin-top: 30px;
-  width: 800px;
+  width: 100%;
+  max-width: 100%;
 }
 
 .newArrrivalbannerImage {
-  height: 190px;
-  width: 750px;
+  width: 100%;
+  max-width: 750px;
+  height: auto;
+  max-height: 190px;
   border-radius: 8px;
+  margin: 0 auto;
 }
 
 .Home_NewArrivals h2 {
   text-align: center;
   margin: 40px 0;
+  font-size: 30px;
 }
 
 .NewArrivalsCards {
   display: flex;
-  margin: 0 20px;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin: 0 auto;
 }
 
 .NewArrivalsCard_div {
   width: 240px;
-  height: 370px;
+  height: fit-content;
   border: 1px solid #ccc;
   padding: 5px 5px 10px;
   border-radius: 3px;
@@ -327,6 +339,8 @@ main {
 
 .NewArrivalsCard_div img {
   width: 100%;
+  height: 300px;
+  object-fit: cover;
   margin-bottom: 10px;
 }
 
@@ -339,7 +353,7 @@ main {
 
 .NewArrivalsCardPrice {
   margin-top: 10px;
-  color:#333333;
+  color: #333333;
   font-size: 16px;
 }
 
@@ -370,28 +384,30 @@ main {
   border-radius: 8px;
 }
 
-/* Shop Now banners */
+.NewArrivals_BTN_Div:hover {
+  background-color: #cccccc;
+  color: #000;
+}
 
- .CenterDivShopNowCards {
-  width: 750px;
-  height: fit-content;
+/* Shop Now Banners */
+.CenterDivShopNowCards {
   display: flex;
-  position: relative;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 10px;
-  overflow: hidden;
+  max-width: 100%;
   margin: 0 auto 30px;
 }
 
 .CenterDivShopNowCard {
   position: relative;
   overflow: hidden;
-  height: fit-content;
+  width: 370px;
 }
 
 .CenterDivShopNowCardImg {
-  width: 370px;
+  width: 100%;
   height: 450px;
-  display: block;
   object-fit: cover;
   border-radius: 5px;
 }
@@ -417,21 +433,18 @@ main {
   margin-bottom: 15px;
 }
 
-.CenterDivShopNowCard_content a {
-  text-decoration: none;
-}
-
 /* Center Product Cards Grid */
-
 .CenterProductCardDiv {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 800px;
+  gap: 15px;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 .CenterProductCard {
-  background-color:#fff;
+  background-color: #fff;
   border-radius: 5px;
   padding: 15px 5px 10px;
   width: 250px;
@@ -444,9 +457,8 @@ main {
 }
 
 .CenterProductCard img {
-  align-items: center;
   width: 100%;
-  height: auto;
+  height: 200px;
   object-fit: cover;
   margin-bottom: 10px;
 }
@@ -466,7 +478,7 @@ main {
 }
 
 .CenterProductCardBtns {
-  margin: 0 auto;
+  margin: 10px auto 0;
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -491,52 +503,40 @@ main {
   border-radius: 8px;
   background-color: #000;
   color: #fff;
-  z-index: 4;
 }
 
 .productCard_content .centerGridcartbtn:hover {
   color: #ff6600;
 }
 
-/* Essential Section Sales Div  */
-
+/* Essential Section Sales Div */
 .essentialSection_SalesDiv {
   background-color: #fff;
   color: #000;
   border-radius: 10px;
-  padding: 5px;
+  padding: 10px;
   max-height: 730px;
   width: 300px;
   text-align: center;
-  justify-content: right;
-  top: 60px;
   position: sticky;
+  top: 80px;
   align-self: flex-start;
-  z-index: 2;
+  border: 1px solid #ccc;
 }
 
 .essentialSection_ShopNowDiv {
-  margin-top: 30px;
-  text-align: center;
-}
-
-.essentialSection_SalesDiv_content img {
-  width: 250px;
-  height: auto;
-  border-radius: 10px;
-  margin-bottom: 10px;
-}
-
-.essentialSection_ShopNowDiv {
-  text-align: center;
+  margin-top: 20px;
   padding: 5px 5px 8px;
   border: 1px solid #ccc;
   border-radius: 10px;
 }
 
 .essentialSection_SalesDiv_content img {
-  width: 250px;
+  width: 100%;
+  max-width: 250px;
   height: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 .SaleSection_ProdTitle {
@@ -550,33 +550,30 @@ main {
   color: #000;
 }
 
-
-/* Home Page Side Buttons  */
-
+/* Home Page Side Buttons */
 .HomePageButtons {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  width: fit-content;
-  height: fit-content;
-  position: sticky;
-  gap: 20px;
-  z-index: 5;
-  left: 95%;
-  bottom: 10%;
+  gap: 15px;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 1000;
 }
 
-.HomePageButtons div:hover , .HomePageButtons i:hover {
-  background-color: #0B5ED7;
+.HomePageButtons div:hover,
+.HomePageButtons i:hover {
+  background-color: #ff6600;
   color: #000;
 }
 
-#HomePageButtons_CartBtn, .addProductIcon {
-  padding: 15px 18px;
-  border-radius: 100px;
-  background-color: #ccc;
+#HomePageButtons_CartBtn,
+.addProductIcon {
+  padding: 12px 15px;
+  border-radius: 50%;
+  background-color: #000;
   border: none;
-  background-color: #cccccc;
+  color: #fff;
 }
 
 .HomePageButtons i {
@@ -649,6 +646,7 @@ main {
   color: #e74c3c;
   cursor: pointer;
 }
+
 .fa-trash:hover {
   color: #c0392b;
 }
@@ -656,6 +654,7 @@ main {
 .cartProductPriceDiv {
   margin-top: 10px;
 }
+
 .cartProductPrice {
   font-weight: 600;
   color: #333;
@@ -676,8 +675,7 @@ main {
   width: 40px;
 }
 
-/* FOOTER */
-
+/* Footer */
 .footer {
   background: #111;
   color: #ddd;
@@ -741,7 +739,7 @@ main {
   margin-top: 15px;
 }
 
-/* Bottom */
+/* Footer Bottom */
 .footer-bottom {
   background: #0c0c0c;
   padding: 20px 0;
@@ -782,76 +780,108 @@ main {
   color: #e0a800;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-  .footer-bottom-flex {
-    flex-direction: column;
+/* Responsive Design */
+@media (min-width: 992px) {
+  .AboutBannersCardPost_Divs {
+    position: sticky;
+    top: 80px;
+    align-self: flex-start;
+    width: 250px;
+    z-index: 2;
+  }
+
+  .essentialSection_SalesDiv {
+    position: sticky;
+    top: 80px;
+    align-self: flex-start;
+  }
+
+  .EssentialSectionMainDiv {
     gap: 15px;
   }
-  .footer-heading {
-    font-size: 20px;
+
+  .chooseYourEssentialsDiv {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  .CenterProductCardDiv {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  .Home_NewArrivals {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  .CenterDivShopNowCards {
+    max-width: 100%;
+    padding: 0 10px;
   }
 }
 
-@media (max-width: 768px) {
-  .AboutBannersCardPost_Divs,
+@media (max-width: 992px) {
   .essentialSection_SalesDiv {
     display: none;
   }
 
   .EssentialSectionMainDiv {
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .AboutBannersCardPost_Divs {
+    width: 100%;
+    max-width: 300px;
+    align-items: center;
+    margin-bottom: 20px;
+    position: static;
+  }
+
+  .essentialsSection_aboutUs,
+  .homeShopNowBanner img,
+  .MoreProduct,
+  .LatestPost {
+    width: 100%;
+    max-width: 300px;
   }
 
   .chooseYourEssentialsDiv {
     max-width: 100%;
-    width: 100%;
-    margin: 0 auto;
+    padding: 0 10px;
   }
 
   .Home_NewArrivals {
-    width: 100%;
     max-width: 100%;
+    padding: 0 10px;
   }
 
   .newArrrivalbannerImage {
-    width: 100%;
     max-width: 100%;
-    height: auto;
-  }
-
-  .NewArrivalsCards {
-    flex-direction: column;
-    align-items: center;
-    margin: 0;
-  }
-
-  .NewArrivalsCard_div {
-    width: 100%;
-    max-width: 300px;
-    margin-bottom: 20px;
   }
 
   .CenterDivShopNowCards {
-    flex-direction: column;
-    width: 100%;
     max-width: 100%;
+    padding: 0 10px;
+  }
+
+  .CenterDivShopNowCard {
+    width: 100%;
+    max-width: 400px;
   }
 
   .CenterDivShopNowCardImg {
     width: 100%;
     height: auto;
+    max-height: 400px;
   }
+}
 
-  .CenterProductCardDiv {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .CenterProductCard {
-    width: 100%;
-    max-width: 300px;
-    margin-bottom: 20px;
+@media (max-width: 768px) {
+  .bannerImg {
+    height: 400px;
   }
 
   .banner_content {
@@ -871,6 +901,10 @@ main {
     font-size: 16px;
   }
 
+  .section-title {
+    font-size: 30px;
+  }
+
   .EssentialsContainer {
     gap: 10px;
   }
@@ -885,8 +919,31 @@ main {
     height: 120px;
   }
 
-  .section-title {
-    font-size: 30px;
+  .NewArrivalsCards {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+  }
+
+  .NewArrivalsCard_div {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+  }
+
+  .NewArrivalsCard_div img {
+    height: 250px;
+  }
+
+  .CenterProductCardDiv {
+    gap: 10px;
+    padding: 0 10px;
+  }
+
+  .CenterProductCard {
+    width: 100%;
+    max-width: 300px;
   }
 
   .navbar-nav {
@@ -906,5 +963,165 @@ main {
   .footer-logo {
     margin: 15px auto;
   }
+
+  .footer-bottom-flex {
+    flex-direction: column;
+    gap: 15px;
+  }
 }
 
+@media (max-width: 576px) {
+  body {
+    padding-top: 60px;
+  }
+
+  .bannerImg {
+    height: 300px;
+  }
+
+  .banner_content {
+    width: 90%;
+  }
+
+  .headerbannerH1 {
+    font-size: 28px;
+  }
+
+  .headerbannerH3 {
+    font-size: 16px;
+  }
+
+  .headerbannerBtn {
+    padding: 6px 15px;
+    font-size: 14px;
+  }
+
+  .chooseYourEssentialsSection {
+    padding: 20px 5px;
+  }
+
+  .section-title {
+    font-size: 24px;
+  }
+
+  .EssentialsContainer {
+    gap: 8px;
+    padding: 0 5px;
+  }
+
+  .EssentialDiv {
+    width: 48%;
+    max-width: 140px;
+  }
+
+  .essentialsImg {
+    width: 100%;
+    height: 100px;
+  }
+
+  .Home_NewArrivals {
+    padding: 0 5px;
+  }
+
+  .Home_NewArrivals h2 {
+    font-size: 24px;
+    margin: 20px 0;
+  }
+
+  .newArrrivalbannerImage {
+    max-height: 150px;
+  }
+
+  .NewArrivalsCards {
+    gap: 8px;
+    padding: 0 5px;
+  }
+
+  .NewArrivalsCard_div {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .NewArrivalsCard_div img {
+    height: 200px;
+  }
+
+  .CenterDivShopNowCards {
+    padding: 0 5px;
+  }
+
+  .CenterDivShopNowCard {
+    max-width: 100%;
+  }
+
+  .CenterDivShopNowCardImg {
+    max-height: 350px;
+  }
+
+  .CenterDivShopNowCard_content h2 {
+    font-size: 20px;
+  }
+
+  .CenterProductCardDiv {
+    gap: 8px;
+    padding: 0 5px;
+  }
+
+  .CenterProductCard {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .CenterProductCard img {
+    height: 180px;
+  }
+
+  .HomePageButtons {
+    right: 10px;
+    bottom: 10px;
+  }
+
+  #HomePageButtons_CartBtn,
+  .addProductIcon {
+    padding: 10px 12px;
+  }
+
+  .CartOffCanvas {
+    width: 300px !important;
+  }
+
+  .cartProductsImg {
+    width: 60px;
+    height: 60px;
+  }
+
+  .cartProductTitle {
+    font-size: 14px;
+  }
+
+  .offcanvas-title {
+    font-size: 18px;
+  }
+
+  .AboutBannersCardPost_Divs {
+    display: none;
+  }
+}
+
+@media (min-width: 1200px) {
+  .EssentialSectionMainDiv {
+    gap: 30px;
+  }
+
+  .banner_content {
+    max-width: 900px;
+  }
+
+  .headerbannerH1 {
+    font-size: 72px;
+  }
+
+  .headerbannerH3 {
+    font-size: 28px;
+  }
+}
