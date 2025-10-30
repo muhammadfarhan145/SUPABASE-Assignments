@@ -178,3 +178,4 @@ const loadNewArrivals = async () => {
 
 loadNewArrivals();
 offCanvasCards();
+subscribeToCartChanges();

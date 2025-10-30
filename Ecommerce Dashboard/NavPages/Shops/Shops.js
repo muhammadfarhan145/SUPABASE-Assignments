@@ -171,3 +171,4 @@ const loadShopProducts = async () => {
 };
 loadShopProducts();
 offCanvasCards();
+subscribeToCartChanges();
