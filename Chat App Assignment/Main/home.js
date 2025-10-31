@@ -2,10 +2,10 @@ const supabaseClient = supabase.createClient("https://queftwxqyuinynpsixqa.supab
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF1ZWZ0d3hxeXVpbnlucHNpeHFhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk5MTQ5NDEsImV4cCI6MjA3NTQ5MDk0MX0.TWex1aIXHoopzD9q1LR2hOt6hsBY6JN3aAtaXpvM5hc"
 );
 
-// Modals
+// Modals & Toasts
 const signInFirstModal = () => {
   const signInFirstModal = new bootstrap.Modal(
-    document.getElementById("signInFristModal")
+    document.getElementById("signInFirstModal")
   );
   signInFirstModal.show();
 };
@@ -15,6 +15,19 @@ const signOutModal = () => {
     document.getElementById("signOutModal")
   );
   SignOutModal.show();
+};
+
+const RequestSentErrorAlert = () => {
+  const RequestSentErrorAlert = new bootstrap.Modal(
+    document.getElementById("RequestSentErrorAlert")
+  );
+  RequestSentErrorAlert.show();
+};
+
+const RequestSentToast = () => {
+  const RequestSentSuccessfullyToast = document.getElementById("RequestSentSuccessfullyToast");
+  const toastBootstrap = bootstrap.Toast.getOrCreateInstance(RequestSentSuccessfullyToast);
+  toastBootstrap.show();
 };
 
 const requests_Counter = document.getElementById("requests_Counter");
@@ -35,7 +48,7 @@ const checkUser = async () => {
     if(!user){
         console.error(error.message);
         signInFirstModal();
-        setTimeout(() =>window.location.href = "../SignIn/SignIn.html", 900);
+        setTimeout(() =>window.location.href = "../index.html", 900);
         return false;
     }
     currentUserId = user.id;
@@ -47,7 +60,9 @@ checkUser();
 const headerData = async () => {
     const { data: { user: authUser }, error: authError } = await supabaseClient.auth.getUser();
     if (authError || !authUser){   
-        return console.error('Not logged in');
+        console.error('Not logged in');
+        signOutModal();
+        return;
     }
 
     const { data: profile, error: profileError } = await supabaseClient
@@ -83,7 +98,7 @@ const headerData = async () => {
 
             signOutModal();
             setTimeout(() => {
-                window.location.href = "../SignIn/SignIn.html";
+                window.location.href = "..index.html";
             }, 1500);
         });
     }
@@ -136,7 +151,7 @@ const loadFriendRequest = async () => {
         if (!map.has(req.sender_id)) {
             map.set(req.sender_id, {
                 username: req.users.username,
-                profile_pic: req.users.profile_pic || '../Assets/default-pic.png',
+                profile_pic: req.users.profile_pic || '../Assets/defaultuserimg.jpeg',
                 id: req.id,
                 count: 0
             });
@@ -151,7 +166,7 @@ const loadFriendRequest = async () => {
         card.className = "RequestedUserCard";
         card.innerHTML = `
             <div class="RequestedUser-img-username">
-                <img src="${info.profile_pic}" class="RequestedUserImg" onerror="this.src='../Assets/default-pic.png'">
+                <img src="${info.profile_pic}" class="RequestedUserImg" onerror="this.src='../Assets/defaultuserimg.jpeg'">
                 <div>
                     <p class="RequestedUserUsername">${info.username}</p>
                     <small class="text-muted">${info.count} request${info.count > 1 ? 's' : ''}</small>
@@ -187,66 +202,50 @@ const acceptRequest = async (request_id, sender_id) => {
             { user_id: sender_id, friend_id: currentUserId }
         ]);
 
-    const { data: friendData, error: fetchError } = await supabaseClient
-        .from("users")
-        .select("username, profile_pic")
-        .eq("id", sender_id)
-        .single();
 
-    if (fetchError || !friendData) {
-        console.error("Failed to fetch friend data:", fetchError);
-        return;
-    }
-
-    if (document.querySelector(`[data-friend-id="${sender_id}"]`)) return;
-
-    const friendCard = document.createElement("div");
-    friendCard.className = "friendCard";
-    friendCard.dataset.friendId = sender_id;
-    friendCard.onclick = () => loadChat(sender_id, friendData.username);
-    friendCard.innerHTML = `
-        <img src="${friendData.profile_pic || '../Assets/default-pic.png'}" class="friendImg" onerror="this.src='../Assets/default-pic.png'">
-        <div class="friendCard_content">
-            <p class="friend_username_P">${friendData.username}</p>
-            <p class="friendStatus_p"> Online</p>
-        </div>
-    `;
-    friendCards.appendChild(friendCard);
-
-    loadFriendRequest();
-    updateIncomingCounter();
 };
 
 const loadFriends = async () => {
     if (!currentUserId) return;
 
-    const { data } = await supabaseClient
-    .from("friends")
-    .select("friend_id, users!friend_id(username, profile_pic)")
-    .eq("user_id", currentUserId);
+    const { data, error } = await supabaseClient
+        .from("friends")
+        .select("friend_id, users!friend_id(username, profile_pic)")
+        .eq("user_id", currentUserId);
 
-    const existingIds = new Set(
-        Array.from(friendCards.children).map(card => card.dataset.friendId)
-    );
+    if (error) {
+        console.error("Load friends error:", error.message);
+        return;
+    }
 
+    const uniqueFriends = new Map();
     data.forEach(f => {
-        if (existingIds.has(f.friend_id)) return;
+        if (!uniqueFriends.has(f.friend_id)) {
+            uniqueFriends.set(f.friend_id, f);
+        }
+    });
 
+    friendCards.innerHTML = "";
+
+    uniqueFriends.forEach(f => {
         const friendCard = document.createElement("div");
         friendCard.className = "friendCard";
         friendCard.dataset.friendId = f.friend_id;
         friendCard.onclick = () => loadChat(f.friend_id, f.users.username);
+
         friendCard.innerHTML = `
-            <img src="${f.users.profile_pic}" class="friendImg">
+            <img src="${f.users.profile_pic || '../Assets/default-pic.png'}" 
+                 class="friendImg" onerror="this.src='../Assets/default-pic.png'">
             <div class="friendCard_content">
                 <p class="friend_username_P">${f.users.username}</p>
-                <p class="friendStatus_p"> <i class="fa-solid fa-circle-dot fa-2xs" style="color: #59ce49;"></i> Online</p>
+                <p class="friendStatus_p">Online</p>
             </div>
         `;
 
         friendCards.appendChild(friendCard);
     });
-}
+};
+
 
 const loadUsers = async () => {
     if (!currentUserId) return;
@@ -293,14 +292,16 @@ const sendFriendRequest = async (receiver_id) => {
     });
     if(error){
         console.error(error.message);
-        alert("error sending request");
+        RequestSentErrorAlert();
     } else {
-        alert("Friend Request Sent!");
+        RequestSentToast();
     }
 };
 
 const loadChat = async (friend_id, friend_username) => {
     currentChatUser = { id: friend_id, username: friend_username };
+    document.getElementById("selectChatH3").textContent = "";
+
     const { data, error } = await supabaseClient
         .from("messages")
         .select("*")
@@ -314,11 +315,6 @@ const loadChat = async (friend_id, friend_username) => {
 
     const messageDiv = document.getElementById("messages");
     messageDiv.innerHTML = "";
-
-    if (!data || data.length === 0) {
-        messageDiv.innerHTML = "<p class='text-white text-center'>No messages yet. Start chatting!</p>";
-        return;
-    }
 
     data.forEach(msg => {
         if (!msg || !msg.message) return;
@@ -372,45 +368,89 @@ const sendMessage = async () => {
 }
 
 
-const setupRealtimeSubscriptions = () => {
-    supabaseClient
-        .channel('friend_requests_channel')
-        .on('postgres_changes', { 
-            event: 'INSERT', 
-            schema: 'public', 
-            table: 'friend_requests' 
-        }, (payload) => {
-            if (payload.new.receiver_id === currentUserId && payload.new.status === 'pending') {
-                loadFriendRequest();
-                updateIncomingCounter();
-            }
-        })
-        .subscribe();
+const RealtimeSubscriptions = () => {
 
-supabaseClient
-    .channel('messages_channel')
-    .on('postgres_changes', { event: 'INSERT',schema: 'public', 
-            table: 'messages' }, (payload) => {
-        if (currentChatUser && 
-            (payload.new.sender_id === currentChatUser.id || 
-             payload.new.receiver_id === currentUserId)) {
-
-            const messageDiv = document.getElementById('messages');
-
-            if (messageDiv.querySelector(`[data-msg-id="${payload.new.id}"]`)) return;
-
-            const div = document.createElement('div');
-            div.dataset.msgId = payload.new.id;
-            div.className = `message ${payload.new.sender_id === currentUserId ? 'sent' : 'received'}`;
-            div.textContent = payload.new.message;
-            messageDiv.appendChild(div);
-
-            messageDiv.scrollTop = messageDiv.scrollHeight;
+  supabaseClient
+    .channel('friend_requests_channel')
+    .on(
+      'postgres_changes',
+      { event: '*', schema: 'public', table: 'friend_requests' },
+      (payload) => {
+        if (
+          payload.eventType === 'INSERT' &&
+          payload.new.receiver_id === currentUserId &&
+          payload.new.status === 'pending'
+        ) {
+          loadFriendRequest();
+          updateIncomingCounter();
         }
-    })
+
+        if (
+          payload.eventType === 'UPDATE' &&
+          payload.new.receiver_id === currentUserId &&
+          payload.new.status === 'accepted'
+        ) {
+          loadFriendRequest();
+          updateIncomingCounter();
+          loadFriends();
+        }
+
+        if (
+          payload.eventType === 'DELETE' &&
+          payload.old.receiver_id === currentUserId
+        ) {
+          loadFriendRequest();
+          updateIncomingCounter();
+        }
+      }
+    )
+    .subscribe();
+
+  supabaseClient
+    .channel('messages_channel')
+    .on(
+      'postgres_changes',
+      { event: 'INSERT', schema: 'public', table: 'messages' },
+      (payload) => {
+        if (
+          currentChatUser &&
+          (payload.new.sender_id === currentChatUser.id ||
+            payload.new.receiver_id === currentUserId)
+        ) {
+          const messageDiv = document.getElementById('messages');
+
+          if (messageDiv.querySelector(`[data-msg-id="${payload.new.id}"]`)) return;
+
+          const div = document.createElement('div');
+          div.dataset.msgId = payload.new.id;
+          div.className = `message ${
+            payload.new.sender_id === currentUserId ? 'sent' : 'received'
+          }`;
+          div.textContent = payload.new.message;
+          messageDiv.appendChild(div);
+
+          messageDiv.scrollTop = messageDiv.scrollHeight;
+        }
+      }
+    )
+    .subscribe();
+
+  supabaseClient
+    .channel('friends_channel')
+    .on(
+      'postgres_changes',
+      { event: 'INSERT', schema: 'public', table: 'friends' },
+      (payload) => {
+        if (
+          payload.new.user_id === currentUserId ||
+          payload.new.friend_id === currentUserId
+        ) {
+          loadFriends();
+        }
+      }
+    )
     .subscribe();
 };
-
 
 (async () => {
     const isLoggedIn = await checkUser();
@@ -420,10 +460,7 @@ supabaseClient
     await loadUsers();
     await loadFriends();
     await loadFriendRequest();
-
-    setupRealtimeSubscriptions();
-    
-
+    RealtimeSubscriptions();
 })();
 
 document.getElementById("messagesendBtn").addEventListener("click", sendMessage);

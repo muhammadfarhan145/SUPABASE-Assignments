@@ -21,19 +21,15 @@
                 <p id="requests_P" class="requests_P">Requests<span id="requests_Counter" class="requests_Counter">0</span></p>
             </button>
             <div class="friendCards">
-                <!-- Friend cards will be loaded here -->
             </div>
         </div> 
         <div class="ChatCol" id="ChatCol">
             <header class="chatColheader">
-                <img src="../Assets/userimg.jpg" class="chatColHeaderUserImg">
-                <h2 class="chatColHeaderUsername">Username</h2>
-                <button class="chatColHeadersignOutBtn">Sign Out</button>
             </header>
             <hr class="chatColHeaderHr">
+            <h3 id="selectChatH3" class="text-center text-white mt-3">Select a friend to chat</h3>
             <div class="chatBox">
                 <div class="message_container" id="messages">
-                    <!-- Messages will be loaded here -->
                 </div>
                 <div class="messageInput_SendBtn">
                     <input type="text" class="chatBoxMessageInput" placeholder="Type a message here..." />
@@ -47,16 +43,23 @@
             <h3>Add Friends</h3>
             <input type="search" placeholder="Search User" class="addFriendsColInput">
             <div class="userCards">               
-                <!-- User cards will be loaded here -->
             </div>
         </div>
     </div>
 
     <!-- Modals -->
-    <div class="modal fade" id="signInFristModal" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="signInFirstModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-sm">
             <div class="modal-content p-3 text-center">
                 <p>Sign In First</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="RequestSentErrorAlert" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content p-3 text-center">
+                <p>Error sending request</p>
             </div>
         </div>
     </div>
@@ -69,6 +72,21 @@
       </div>
     </div>
 
+    <!-- Toast -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="RequestSentSuccessfullyToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="../Assets/logo.png" class="rounded me-2 toast_logo" alt="Logo"/><strong class="me-auto">Convo</strong>
+                <p id="toastTime"></p>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                <p>Friend Request Sent!</p>
+            </div>
+        </div>
+    </div>
+
+
     <!-- Off Canvas (Requests) -->
     <div class="offcanvas offcanvas-start CartOffCanvas" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
@@ -77,7 +95,6 @@
         </div>
         <div class="offcanvas-body" id="offcanvas-body">
             <div class="RequestedUserCards" id="requestedUserCards">
-                <!-- Requests will be loaded here -->
             </div>
         </div>
     </div>    

@@ -1,6 +1,6 @@
 @font-face {
     font-family: "LogoFonts";
-    src: url("../Assets/Fonts/Freckle_Face/FreckleFace-Regular.ttf");
+    src: url("../AssetsFonts/Freckle_Face/FreckleFace-Regular.ttf");
 }
 
 * {
@@ -463,4 +463,8 @@ body {
 
 .RequestAcceptBtn:hover {
     background-color: #136b49;
+}
+
+.toast_logo {
+    width: 40px;
 }

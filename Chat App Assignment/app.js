@@ -2,7 +2,7 @@ const supabaseClient = supabase.createClient("https://queftwxqyuinynpsixqa.supab
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF1ZWZ0d3hxeXVpbnlucHNpeHFhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk5MTQ5NDEsImV4cCI6MjA3NTQ5MDk0MX0.TWex1aIXHoopzD9q1LR2hOt6hsBY6JN3aAtaXpvM5hc"
 );
 
-const signUpButton = document.getElementById("signUpButton");
+const signInButton = document.getElementById("signInButton");
 
 // Modals
 const admin1IdPasswordModal = () => {
@@ -33,68 +33,67 @@ const passLenghtModal = () => {
   passwordErrorModal.show();
 };
 
+const checkUser = async () => {
+  const {
+    data: { session },
+  } = await supabaseClient.auth.getSession();
+
+  if (session) {
+    const { data, error } = await supabaseClient.auth.getUser();
+
+    if (error || !data?.user) {
+      return;
+    }
+    window.location.href = "./Main/home.html";
+  }
+};
+checkUser();
+
 const showErrors = () => {
   const email = document.getElementById("emailInput").value.trim();
   const password = document.getElementById("passwordInput").value.trim();
-  const username = document.getElementById("usernameInput").value.trim();
-
-    if (!username || !email || !password) {
+    if (!email || !password) {
       fieldErrorModal();
-      return;
+    return;
     }
 
     if (password.length < 6) {
-        passLenghtModal();
-        return;
+      passLenghtModal();
+      return;
     }
 
-    signUpButton.setAttribute("disabled", "true") 
-    signUpButton.innerHTML = `
+    signInButton.setAttribute("disabled", "true") 
+    signInButton.innerHTML = `
         <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
-        <span role="status">Signing Up</span>
+        <span role="status">Signing In</span>
     `;
 
-    signUpUser();
-}
-
-const signUpUser = async () => {
-  const Error_P = document.getElementById("showError_P");
-  const username = document.getElementById("usernameInput").value.trim();
-  const email = document.getElementById("emailInput").value.trim();
-  const password = document.getElementById("passwordInput").value.trim();
-    const { data, error } = await supabaseClient.auth.signUp(
-      {
-        email,
-         password,
-         options: {
-          data: {
-            username
-          }
-        }
-      }
-    );
-
-    if(error){
-      signUpButton.innerHTML = "SIGN UP";
-      signUpButton.removeAttribute("disabled")
-      Error_P.textContent = error.message;
-      console.error(error.message);
-      return;
-    }
-
-    const { error: dbError } = await supabaseClient
-    .from("users")
-    .insert({ id: data.user.id, username });
-
-    if(dbError){
-      signUpButton.innerHTML = "SIGN UP";
-      signUpButton.removeAttribute("disabled")
-      Error_P.textContent = error.message;
-      console.error(error.message);
-      return;
-    }
-
-    window.location.href = "./SignIn/SignIn.html";
+    signInUser();
 };
 
-signUpButton.addEventListener("click", showErrors);
+const signInUser = async () => {
+  const Error_P = document.getElementById("showError_P");
+  const email = document.getElementById("emailInput").value.trim();
+  const password = document.getElementById("passwordInput").value.trim();
+
+  const { data, error } = await supabaseClient.auth.signInWithPassword({
+  email,
+  password,
+  });
+
+  if(error){
+    console.error(error.message);
+    signInButton.innerHTML = `
+      SIGN IN
+    `;
+    signInButton.removeAttribute("disabled")
+    Error_P.textContent = error.message;
+  } else {
+    console.log(data);
+    window.location.href = "./Main/home.html"
+  }
+};
+
+signInButton.addEventListener("click", () => {
+  showErrors();
+});
